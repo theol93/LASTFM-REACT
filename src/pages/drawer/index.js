@@ -1,17 +1,26 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Drawer from '@material-ui/core/Drawer';
+import List from '@material-ui/core/List';
+import ListItem from '@material-ui/core/ListItem';
+import ListItemText from '@material-ui/core/ListItemText';
 import Divider from '@material-ui/core/Divider';
+
+
 import {
     BrowserRouter as Router,
     Link
 } from "react-router-dom";
+import Button from "@material-ui/core/Button";
 
 const drawerWidth = 240;
 
 const useStyles = makeStyles((theme) => ({
     root: {
-        display: 'flex',
+
+        width: '100%',
+        maxWidth: 360,
+        backgroundColor: theme.palette.background.paper,
     },
     appBar: {
         width: `calc(100% - ${drawerWidth}px)`,
@@ -47,22 +56,31 @@ export default function ClippedDrawer() {
             >
                 <div className={classes.drawerContainer}>
                     <Divider />
-                        <nav>
-                            <ul>
-                                <li>
-                                    <Link to="/search">Search</Link>
-                                </li>
-                                <li>
-                                    <Link to="/saved">Saved</Link>
-                                </li>
-                                <li>
-                                    <Link to="/page404">Page404</Link>
-                                </li>
-                                <li>
-                                    <Link to="/login">Login</Link>
-                                </li>
-                            </ul>
-                        </nav>
+                        <List component="nav" className={classes.root} aria-label="mailbox folders">
+                            <Link to="/search">
+                                <ListItem button>
+                                    <ListItemText primary="Search" />
+                                </ListItem>
+                            </Link>
+                            <Divider />
+                            <Link to="/saved">
+                                <ListItem button>
+                                    <ListItemText primary="Saved" />
+                                </ListItem>
+                            </Link>
+                            <Divider />
+                            <Link to="/page404">
+                                <ListItem button>
+                                    <ListItemText primary="Page404" />
+                                </ListItem>
+                            </Link>
+                            <Divider />
+                            <Link to="/login">
+                                <ListItem button>
+                                    <ListItemText primary="Login" />
+                                </ListItem>
+                            </Link>
+                        </List>
                     <Divider />
                 </div>
             </Drawer>
