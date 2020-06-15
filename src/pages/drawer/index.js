@@ -85,7 +85,6 @@ export default function ClippedDrawer() {
                 </div>
             </Drawer>
             <Router />
-            <Router />
         </div>
     );
 }
