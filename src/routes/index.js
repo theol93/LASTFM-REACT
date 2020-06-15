@@ -3,14 +3,14 @@ import Search from '../pages/search/index';
 import Page404 from '../pages/404/index';
 import Login from '../pages/login/index';
 import Drawer from '../pages/drawer/index'
-
+import Grid from "@material-ui/core/Grid";
 import React from "react";
+
 import {
     BrowserRouter as Router,
     Switch,
     Route,
 } from "react-router-dom";
-import Grid from "@material-ui/core/Grid";
 
 export default function App() {
     return (
