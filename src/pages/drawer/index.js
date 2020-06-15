@@ -62,19 +62,16 @@ export default function ClippedDrawer() {
                                     <ListItemText primary="Search" />
                                 </ListItem>
                             </Link>
-                            <Divider />
                             <Link to="/saved">
                                 <ListItem button>
                                     <ListItemText primary="Saved" />
                                 </ListItem>
                             </Link>
-                            <Divider />
                             <Link to="/page404">
                                 <ListItem button>
                                     <ListItemText primary="Page404" />
                                 </ListItem>
                             </Link>
-                            <Divider />
                             <Link to="/login">
                                 <ListItem button>
                                     <ListItemText primary="Login" />
@@ -84,7 +81,6 @@ export default function ClippedDrawer() {
                     <Divider />
                 </div>
             </Drawer>
-
             <Router />
         </div>
     );

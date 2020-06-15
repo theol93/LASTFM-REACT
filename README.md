@@ -1,7 +1,10 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 # LASTFM-REACT
 LASTFM-REACT
 =======
+=======
+>>>>>>> e22c40d042ccf691960192c66a8e869493fa86eb
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
@@ -70,4 +73,7 @@ This section has moved here: https://facebook.github.io/create-react-app/docs/de
 ### `npm run build` fails to minify
 
 This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+<<<<<<< HEAD
 >>>>>>> e22c40d... Первый коммит
+=======
+>>>>>>> e22c40d042ccf691960192c66a8e869493fa86eb
