@@ -1,6 +1,6 @@
 import Saved from '../pages/saved/index'
 import Search from '../pages/search/index';
-import Page404 from '../pages/404/index';
+import Page404 from '../pages/page404/index';
 import Login from '../pages/login/index';
 import Drawer from '../pages/drawer/index'
 
@@ -9,7 +9,6 @@ import {
     BrowserRouter as Router,
     Switch,
     Route,
-    Link
 } from "react-router-dom";
 import Grid from "@material-ui/core/Grid";
 

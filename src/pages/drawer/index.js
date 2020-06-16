@@ -5,13 +5,10 @@ import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
 import Divider from '@material-ui/core/Divider';
-
-
 import {
     BrowserRouter as Router,
     Link
 } from "react-router-dom";
-import Button from "@material-ui/core/Button";
 
 const drawerWidth = 240;
 
