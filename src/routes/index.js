@@ -30,11 +30,11 @@ export default function App() {
                     <Route path="/saved">
                         <Saved />
                     </Route>
-                    <Route path="/page404">
-                        <Page404 />
-                    </Route>
                     <Route path="/login">
                         <Login />
+                    </Route>
+                    <Route path="*">
+                        <Page404 />
                     </Route>
                 </Switch>
                 </Grid>

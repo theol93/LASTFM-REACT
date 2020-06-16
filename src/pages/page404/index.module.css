@@ -1,9 +1,8 @@
 .head {
-    color: red;
-    font-size: 250%;
+    left: auto;
+    font-size: 800%;
 }
 
 .body {
-    color: green;
-    font-size: 250%;
+    font-size: 350%;
 }
