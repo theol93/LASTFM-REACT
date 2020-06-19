@@ -2,8 +2,8 @@ import Saved from '../pages/saved/index'
 import Search from '../pages/search/index';
 import Page404 from '../pages/page404/index';
 import Login from '../pages/login/index';
-import Drawer from '../pages/drawer/index'
-
+import Drawer from '../pages/drawer/index';
+import Register from '../pages/register/index';
 import React from "react";
 import {
     BrowserRouter as Router,
@@ -32,6 +32,9 @@ export default function App() {
                     </Route>
                     <Route path="/login">
                         <Login />
+                    </Route>
+                    <Route path="/register">
+                        <Register />
                     </Route>
                     <Route path="*">
                         <Page404 />

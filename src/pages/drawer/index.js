@@ -5,9 +5,10 @@ import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
 import Divider from '@material-ui/core/Divider';
+import Link from '@material-ui/core/Link';
+
 import {
     BrowserRouter as Router,
-    Link
 } from "react-router-dom";
 
 const drawerWidth = 240;
@@ -54,24 +55,29 @@ export default function ClippedDrawer() {
                 <div className={classes.drawerContainer}>
                     <Divider />
                         <List component="nav" className={classes.root} aria-label="mailbox folders">
-                            <Link to="/search">
+                            <Link href="/search">
                                 <ListItem button>
                                     <ListItemText primary="Search" />
                                 </ListItem>
                             </Link>
-                            <Link to="/saved">
+                            <Link href="/saved">
                                 <ListItem button>
                                     <ListItemText primary="Saved" />
                                 </ListItem>
                             </Link>
-                            <Link to="/page404">
+                            <Link href="/page404">
                                 <ListItem button>
                                     <ListItemText primary="Page404" />
                                 </ListItem>
                             </Link>
-                            <Link to="/login">
+                            <Link href="/login">
                                 <ListItem button>
                                     <ListItemText primary="Login" />
+                                </ListItem>
+                            </Link>
+                            <Link href="/register">
+                                <ListItem button>
+                                    <ListItemText primary="Register" />
                                 </ListItem>
                             </Link>
                         </List>
