@@ -1,9 +1,10 @@
 import React from 'react';
+import Container from "@material-ui/core/Container";
 
 export default function Saved(){
     return(
-        <div>
+        <Container component="main" maxWidth="xs">
             Saved music
-        </div>
+        </Container>
     )
 }

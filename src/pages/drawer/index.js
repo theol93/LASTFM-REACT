@@ -1,91 +1,66 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import Drawer from '@material-ui/core/Drawer';
-import List from '@material-ui/core/List';
+import Paper from '@material-ui/core/Paper';
+import Tabs from '@material-ui/core/Tabs';
+import Tab from '@material-ui/core/Tab';
 import ListItem from '@material-ui/core/ListItem';
-import ListItemText from '@material-ui/core/ListItemText';
-import Divider from '@material-ui/core/Divider';
-import Link from '@material-ui/core/Link';
+import ListItemText from '@material-ui/core/ListItem';
 
+import Link from '@material-ui/core/Link';
 import {
     BrowserRouter as Router,
 } from "react-router-dom";
 
-const drawerWidth = 240;
-
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles({
     root: {
-
-        width: '100%',
-        maxWidth: 360,
-        backgroundColor: theme.palette.background.paper,
-    },
-    appBar: {
-        width: `calc(100% - ${drawerWidth}px)`,
-        marginLeft: drawerWidth,
-        zIndex: theme.zIndex.drawer + 1,
-    },
-    drawer: {
-        width: drawerWidth,
-        flexShrink: 0,
-    },
-    drawerPaper: {
-        width: drawerWidth,
-    },
-    toolbar: theme.mixins.toolbar,
-    content: {
         flexGrow: 1,
-        backgroundColor: theme.palette.background.default,
-        padding: theme.spacing(3),
     },
-}));
+});
 
-export default function ClippedDrawer() {
+export default function CenteredTabs() {
     const classes = useStyles();
+    const [value, setValue] = React.useState(0);
+
+    const handleChange = (event, newValue) => {
+        setValue(newValue);
+    };
 
     return (
-        <div className={classes.root}>
-            <Drawer
-                className={classes.drawer}
-                variant="permanent"
-                classes={{
-                    paper: classes.drawerPaper,
-                }}
+        <Paper className={classes.root}>
+            <Tabs
+                value={value}
+                onChange={handleChange}
+                indicatorColor="primary"
+                textColor="primary"
+                centered
             >
-                <div className={classes.drawerContainer}>
-                    <Divider />
-                        <List component="nav" className={classes.root} aria-label="mailbox folders">
-                            <Link href="/search">
-                                <ListItem button>
-                                    <ListItemText primary="Search" />
-                                </ListItem>
-                            </Link>
-                            <Link href="/saved">
-                                <ListItem button>
-                                    <ListItemText primary="Saved" />
-                                </ListItem>
-                            </Link>
-                            <Link href="/page404">
-                                <ListItem button>
-                                    <ListItemText primary="Page404" />
-                                </ListItem>
-                            </Link>
-                            <Link href="/login">
-                                <ListItem button>
-                                    <ListItemText primary="Login" />
-                                </ListItem>
-                            </Link>
-                            <Link href="/register">
-                                <ListItem button>
-                                    <ListItemText primary="Register" />
-                                </ListItem>
-                            </Link>
-                        </List>
-                    <Divider />
-                </div>
-            </Drawer>
-            <Router />
-        </div>
+                <Tab  label="Search" href="/search">
+                    <ListItem button>
+                        <ListItemText primary="Search" />
+                    </ListItem>
+                </Tab >
+                 <Tab  label="Saved" href="/saved">
+                    <ListItem button>
+                        <ListItemText primary="Saved" />
+                    </ListItem>
+                </Tab >
+                <Tab  label="Page404" href="/page404">
+                    <ListItem button>
+                        <ListItemText primary="Page404" />
+                    </ListItem>
+                </Tab >
+                <Tab  label="Login" href="/login">
+                    <ListItem button>
+                        <ListItemText primary="Login" />
+                    </ListItem>
+                </Tab >
+                <Tab  label="Register" href="/register">
+                    <ListItem button>
+                        <ListItemText primary="Register" />
+                    </ListItem>
+                </Tab >
+            </Tabs>
+        </Paper>
     );
 }
 

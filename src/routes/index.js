@@ -10,19 +10,15 @@ import {
     Switch,
     Route,
 } from "react-router-dom";
-import Grid from "@material-ui/core/Grid";
 
 export default function App() {
     return (
 
         <Router>
-            <Grid container spacing={0}>
-                <Grid item xs={3}>
                 <nav>
                     <Drawer />
                 </nav>
-                </Grid>
-                <Grid item xs={9}>
+            <nav>
                 <Switch>
                     <Route path="/search">
                         <Search />
@@ -40,8 +36,7 @@ export default function App() {
                         <Page404 />
                     </Route>
                 </Switch>
-                </Grid>
-            </Grid>
+            </nav>
         </Router>
     );
 }

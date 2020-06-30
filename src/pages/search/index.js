@@ -2,6 +2,7 @@ import React from 'react';
 import Button from '@material-ui/core/Button';
 import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
+import Container from "@material-ui/core/Container";
 
 
 
@@ -18,7 +19,7 @@ export default function Search(){
                 border: 0,
                 borderRadius: 3,
                 height: 54,
-                padding: '0 30px',
+                padding: '0 40px',
                 width: '100px',
             }
         }));
@@ -26,6 +27,7 @@ export default function Search(){
         const classes = useStyles();
 
         return(
+            <Container component="main" maxWidth="xs">
             <form className={classes.root} noValidate autoComplete="on">
                 <TextField
                     id="outlined-secondary"
@@ -40,6 +42,7 @@ export default function Search(){
                     Artist
                 </Button>
             </form>
+            </Container>
         );
 }
 
