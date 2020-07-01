@@ -3,13 +3,6 @@ import { makeStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
-import ListItem from '@material-ui/core/ListItem';
-import ListItemText from '@material-ui/core/ListItem';
-
-import Link from '@material-ui/core/Link';
-import {
-    BrowserRouter as Router,
-} from "react-router-dom";
 
 const useStyles = makeStyles({
     root: {
@@ -34,31 +27,12 @@ export default function CenteredTabs() {
                 textColor="primary"
                 centered
             >
-                <Tab  label="Search" href="/search">
-                    <ListItem button>
-                        <ListItemText primary="Search" />
-                    </ListItem>
-                </Tab >
-                 <Tab  label="Saved" href="/saved">
-                    <ListItem button>
-                        <ListItemText primary="Saved" />
-                    </ListItem>
-                </Tab >
-                <Tab  label="Page404" href="/page404">
-                    <ListItem button>
-                        <ListItemText primary="Page404" />
-                    </ListItem>
-                </Tab >
-                <Tab  label="Login" href="/login">
-                    <ListItem button>
-                        <ListItemText primary="Login" />
-                    </ListItem>
-                </Tab >
-                <Tab  label="Register" href="/register">
-                    <ListItem button>
-                        <ListItemText primary="Register" />
-                    </ListItem>
-                </Tab >
+                <Tab  label="Search" href="/search"  />
+                <Tab  label="Saved" href="/saved"   />
+                <Tab  label="Page404" href="/page404" />
+                <Tab  label="Login"  href="/login" />
+                <Tab  label="Register" href="/register" />
+
             </Tabs>
         </Paper>
     );
