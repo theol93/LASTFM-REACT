@@ -15,9 +15,9 @@ export default function App() {
     return (
 
         <Router>
-                <nav>
-                    <Drawer />
-                </nav>
+            <nav>
+                <Drawer />
+            </nav>
             <nav>
                 <Switch>
                     <Route path="/search">
