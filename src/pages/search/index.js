@@ -11,23 +11,26 @@ export default function Search(){
         const useStyles = makeStyles((theme) => ({
             root: {
                 '& > *': {
+                    marginTop: "64px",
                     margin: theme.spacing(1),
                     width: '500px',
                 },
             },
             btn: {
+                marginTop: "32px",
                 border: 0,
-                borderRadius: 3,
+                marginLeft: "15px",
+                borderRadius: 13,
                 height: 54,
-                padding: '0 40px',
-                width: '100px',
+                padding: '0 80px',
+                width: 100,
             }
         }));
 
         const classes = useStyles();
 
-        return(
-            <Container component="main" maxWidth="xs">
+        return(<div>
+            <Container component="main" maxWidth="sm" align="center">
             <form className={classes.root} noValidate autoComplete="on">
                 <TextField
                     id="outlined-secondary"
@@ -35,14 +38,17 @@ export default function Search(){
                     color="primary"
                     placeholder="Введите строку для поиска в это поле"
                 />
+            </form>
+            </Container>
+            <Container component="main" maxWidth="sm" align="center">
                 <Button className={classes.btn} variant="contained">
                     Song
                 </Button>
                 <Button className={classes.btn} variant="contained">
                     Artist
                 </Button>
-            </form>
             </Container>
+            </div>
         );
 }
 
