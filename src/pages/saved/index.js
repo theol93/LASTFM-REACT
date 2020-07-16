@@ -2,7 +2,9 @@ import React from 'react';
 import Container from "@material-ui/core/Container";
 import style from './index.module.css';
 import { makeStyles } from '@material-ui/core/styles';
-import Paper from '@material-ui/core/Paper';
+import List from '@material-ui/core/List';
+import ListItem from '@material-ui/core/ListItem';
+import ListItemText from '@material-ui/core/ListItemText';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -21,19 +23,29 @@ export default function Saved(){
 
     return(
         <Container component="main" maxWidth="sm" align="center" className={style.body}>
-            <div>
-                <div className={classes.root}>
+            <div className={classes.root}>
                     <h3>Top Artists</h3>
-                    <Paper elevation={4}><p>You haven't listened to any music in the selected date range.</p></Paper>
-                </div>
+                    <List component="nav" aria-label="secondary mailbox folders">
+                        <ListItem >
+                            <ListItemText>Artists</ListItemText>
+                        </ListItem>
+                    </List>
             </div>
             <div className={classes.root}>
-                <h3>Top Albums</h3>
-                <Paper elevation={4}><p>You haven't listened to any music in the selected date range.</p></Paper>
+                    <h3>Top Albums</h3>
+                    <List component="nav" aria-label="secondary mailbox folders">
+                        <ListItem >
+                            <ListItemText>Albums</ListItemText>
+                        </ListItem>
+                    </List>
             </div>
             <div className={classes.root}>
-                <h3>Top Tracks</h3>
-                <Paper elevation={4}><p>You haven't listened to any music in the selected date range.</p></Paper>
+                    <h3>Top Tracks</h3>
+                    <List component="nav" aria-label="secondary mailbox folders">
+                        <ListItem >
+                            <ListItemText>Tracks</ListItemText>
+                        </ListItem>
+                    </List>
             </div>
         </Container>
     )

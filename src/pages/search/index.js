@@ -3,7 +3,7 @@ import Button from '@material-ui/core/Button';
 import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 import Container from "@material-ui/core/Container";
-
+import SearchStore from "../../store/search";
 
 
 export default function Search(){
@@ -41,10 +41,10 @@ export default function Search(){
             </form>
             </Container>
             <Container component="main" maxWidth="sm" align="center">
-                <Button className={classes.btn} variant="contained">
+                <Button className={classes.btn} variant="contained" onClick={(e) => console.log(e) /* SearchStore.song()*/}>
                     Song
                 </Button>
-                <Button className={classes.btn} variant="contained">
+                <Button className={classes.btn} variant="contained" onClick={() => SearchStore.artist()}>
                     Artist
                 </Button>
             </Container>
