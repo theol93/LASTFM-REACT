@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import Button from '@material-ui/core/Button';
 import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
@@ -28,6 +28,12 @@ export default function Search(){
         }));
 
         const classes = useStyles();
+        const inputEl = useRef(null);
+
+        const onButtonClick = () => {
+            inputEl.current.focus();
+            console.log(inputEl.current.value)
+        };
 
         return(<div>
             <Container component="main" maxWidth="sm" align="center">
@@ -37,14 +43,15 @@ export default function Search(){
                     variant="outlined"
                     color="primary"
                     placeholder="Введите строку для поиска в это поле"
+                    inputRef={inputEl}
                 />
             </form>
             </Container>
             <Container component="main" maxWidth="sm" align="center">
-                <Button className={classes.btn} variant="contained" onClick={(e) => console.log(e) /* SearchStore.song()*/}>
+                <Button className={classes.btn} variant="contained" onClick={onButtonClick}>
                     Song
                 </Button>
-                <Button className={classes.btn} variant="contained" onClick={() => SearchStore.artist()}>
+                <Button className={classes.btn} variant="contained" onClick={onButtonClick}>
                     Artist
                 </Button>
             </Container>
