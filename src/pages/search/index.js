@@ -5,7 +5,6 @@ import TextField from '@material-ui/core/TextField';
 import Container from "@material-ui/core/Container";
 import SearchStore from "../../store/search";
 
-
 export default function Search(){
 
         const useStyles = makeStyles((theme) => ({
@@ -30,9 +29,16 @@ export default function Search(){
         const classes = useStyles();
         const inputEl = useRef(null);
 
-        const onButtonClick = () => {
-            inputEl.current.focus();
-            console.log(inputEl.current.value)
+        const onButtonClick = (name) => {
+            let val = inputEl.current.value;
+            if (val === ""){
+                return
+            } else {
+                let search = new SearchStore();
+                search.getUrl(val, name);
+                console.log()
+            }
+
         };
 
         return(<div>
@@ -48,10 +54,10 @@ export default function Search(){
             </form>
             </Container>
             <Container component="main" maxWidth="sm" align="center">
-                <Button className={classes.btn} variant="contained" onClick={onButtonClick}>
+                <Button className={classes.btn} variant="contained" onClick={ () => {onButtonClick("track.search&track=")}}>
                     Song
                 </Button>
-                <Button className={classes.btn} variant="contained" onClick={onButtonClick}>
+                <Button className={classes.btn} variant="contained" onClick={ () => {onButtonClick("artist.search&artist=")}}>
                     Artist
                 </Button>
             </Container>
