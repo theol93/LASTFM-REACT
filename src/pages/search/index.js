@@ -1,11 +1,17 @@
-import React, { useRef } from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 import Button from '@material-ui/core/Button';
 import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 import Container from "@material-ui/core/Container";
-import SearchStore from "../../store/search";
 
 export default function Search(){
+        const [btnStatus, setBtnStatus] = useState(true);
+        const [searchResult, setSearchResult] = useState();
+        const [url, setUrl] = useState();
+
+        const inputEl = useRef(null);
+        const start = 'http://ws.audioscrobbler.com/2.0/?method=';
+        const apiKey = '&api_key=ae106d678c11a00457038f9cd9ad465d&format=json';
 
         const useStyles = makeStyles((theme) => ({
             root: {
@@ -25,20 +31,37 @@ export default function Search(){
                 width: 100,
             }
         }));
-
         const classes = useStyles();
-        const inputEl = useRef(null);
 
-        const onButtonClick = (name) => {
+        useEffect(()=> {
+            fetch(url)
+                .then(res => res.json())
+                .then((result) => {
+                    setSearchResult({searchResult: result})
+                })
+        });
+
+        function getUrl(text, type){
+            const url = start + type + text + apiKey;
+            setUrl(url);
+        }
+
+        function onButtonClick(name){
+
+            setBtnStatus({btnStatus: false});
+
             let val = inputEl.current.value;
             if (val === ""){
-                return
+                return;
             } else {
-                let search = new SearchStore();
-                search.getUrl(val, name);
-                console.log()
-            }
 
+                const final = getUrl(val, name);
+
+                setSearchResult({searchResult: final});
+                console.log(final);
+                console.log(btnStatus);
+                console.log(searchResult);
+            }
         };
 
         return(<div>
