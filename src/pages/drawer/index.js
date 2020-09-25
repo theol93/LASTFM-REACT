@@ -34,32 +34,32 @@ export default function CenteredTabs() {
 				centered
 			>
 				<Tab
-					label="Search"
+					label="ПОИСК"
 					component={Link}
 					to="/"
 					icon={<SearchIcon />}
 					selected
 				/>
 				<Tab
-					label="Saved"
+					label="СОХРАНЕННЫЕ"
 					component={Link}
 					to="/saved"
 					icon={<FavoriteBorderIcon />}
 				/>
 				<Tab
-					label="Page404"
+					label="404"
 					component={Link}
 					to="/page404"
 					icon={<NotInterestedIcon />}
 				/>
 				<Tab
-					label="Login"
+					label="ЛОГИН"
 					component={Link}
 					to="/login"
 					icon={<LockOpenIcon />}
 				/>
 				<Tab
-					label="Register"
+					label="РЕГИСТРАЦИЯ"
 					component={Link}
 					to="/register"
 					icon={<ExitToAppIcon />}

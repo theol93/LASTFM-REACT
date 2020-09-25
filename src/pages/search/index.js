@@ -3,9 +3,15 @@ import Button from "@material-ui/core/Button";
 import { makeStyles } from "@material-ui/core/styles";
 import TextField from "@material-ui/core/TextField";
 import Container from "@material-ui/core/Container";
+import ImgMediaCard from "../cards/index";
+import Paper from "@material-ui/core/Paper";
+import Grid from "@material-ui/core/Grid";
 
 export default function Search() {
 	const useStyles = makeStyles((theme) => ({
+		grow: {
+			flexGrow: 1,
+		},
 		root: {
 			"& > *": {
 				marginTop: "64px",
@@ -13,8 +19,18 @@ export default function Search() {
 				width: "500px",
 			},
 		},
+		paper: {
+			marginTop: "30px",
+			marginLeft: "75px",
+			maxWidth: "300px",
+			height: "250px",
+			padding: theme.spacing(1),
+			textAlign: "center",
+			color: theme.palette.text.secondary,
+			backgroundColor: "rgb(240,240,240)",
+		},
 		btn: {
-			marginTop: "32px",
+			marginTop: "64px",
 			border: 0,
 			marginLeft: "15px",
 			borderRadius: 13,
@@ -32,7 +48,9 @@ export default function Search() {
 
 	function onButtonClick(type) {
 		let text = inputEl.current.value;
-		getUrl(text, type);
+		if (text !== "") {
+			getUrl(text, type);
+		}
 	}
 
 	function getUrl(text, type) {
@@ -46,7 +64,9 @@ export default function Search() {
 		let response = await fetch(url);
 		response = await response.json();
 		setIsFetching(false);
-		setData(response.results.trackmatches.track);
+		let sortedByListeners = response.results.trackmatches.track;
+		sortedByListeners.sort((a, b) => a.listeners - b.listeners).reverse();
+		setData(sortedByListeners);
 	}, [url]);
 
 	useEffect(() => {
@@ -58,7 +78,7 @@ export default function Search() {
 	if (IsFetching === true) {
 		return (
 			<div>
-				<Container component="main" maxWidth="sm" align="center">
+				<Container component="main" align="center">
 					<form className={classes.root} noValidate autoComplete="on">
 						<TextField
 							id="outlined-secondary"
@@ -67,44 +87,51 @@ export default function Search() {
 							placeholder="Введите строку для поиска в это поле"
 							inputRef={inputEl}
 						/>
+						<Button
+							className={classes.btn}
+							color="primary"
+							variant="contained"
+							onClick={() => {
+								onButtonClick("track.search&track=");
+							}}
+						>
+							ПЕСНЯ
+						</Button>
 					</form>
-					<Button
-						className={classes.btn}
-						variant="contained"
-						onClick={() => {
-							onButtonClick("track.search&track=");
-						}}
-					>
-						Song
-					</Button>
 				</Container>
 			</div>
 		);
 	} else {
 		return (
 			<div>
-				<Container component="main" maxWidth="sm" align="center">
-					<form className={classes.root} noValidate autoComplete="on">
-						<ul>
-							{data.map((value, index) => {
-								return (
-									<li key={index}>
-										Песня:{value.name} Исполнитель:{value.artist}
-									</li>
-								);
-							})}
-						</ul>
-					</form>
-				</Container>
+				<div className={classes.grow}>
+					<Grid container spacing={1}>
+						{data.map((value, index) => {
+							return (
+								<Grid item xs={3} key={index}>
+									<Paper className={classes.paper}>
+										<ImgMediaCard
+											url={value.url}
+											listeners={value.listeners}
+											title={value.name}
+											subtitle={value.artist}
+										/>
+									</Paper>
+								</Grid>
+							);
+						})}
+					</Grid>
+				</div>
 				<Container component="main" maxWidth="sm" align="center">
 					<Button
 						className={classes.btn}
 						variant="contained"
+						color="primary"
 						onClick={() => {
 							setIsFetching(true);
 						}}
 					>
-						Back to SEARCH!
+						НАЗАД
 					</Button>
 				</Container>
 			</div>
