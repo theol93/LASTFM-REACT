@@ -1,52 +1,48 @@
-import React from 'react';
-import Container from "@material-ui/core/Container";
-import style from './index.module.css';
-import { makeStyles } from '@material-ui/core/styles';
-import List from '@material-ui/core/List';
-import ListItem from '@material-ui/core/ListItem';
-import ListItemText from '@material-ui/core/ListItemText';
+import React from "react";
+import { makeStyles } from "@material-ui/core/styles";
+import Grid from "@material-ui/core/Grid";
+import Paper from "@material-ui/core/Paper";
 
 const useStyles = makeStyles((theme) => ({
-    root: {
-        display: 'flex',
-        flexWrap: 'wrap',
-        '& > *': {
-            margin: theme.spacing(1),
-            width: theme.spacing(16),
-            height: theme.spacing(16),
-        },
-    },
+	root: {
+		flexGrow: 1,
+	},
+	paper: {
+		marginTop: "10px",
+		padding: theme.spacing(1),
+		textAlign: "center",
+		color: theme.palette.text.secondary,
+	},
 }));
 
-export default function Saved(){
-    const classes = useStyles();
+export default function Saved(prop) {
+	const classes = useStyles();
 
-    return(
-        <Container component="main" maxWidth="sm" align="center" className={style.body}>
-            <div className={classes.root}>
-                    <h3>Top Artists</h3>
-                    <List component="nav" aria-label="secondary mailbox folders">
-                        <ListItem >
-                            <ListItemText>Artists</ListItemText>
-                        </ListItem>
-                    </List>
-            </div>
-            <div className={classes.root}>
-                    <h3>Top Albums</h3>
-                    <List component="nav" aria-label="secondary mailbox folders">
-                        <ListItem >
-                            <ListItemText>Albums</ListItemText>
-                        </ListItem>
-                    </List>
-            </div>
-            <div className={classes.root}>
-                    <h3>Top Tracks</h3>
-                    <List component="nav" aria-label="secondary mailbox folders">
-                        <ListItem >
-                            <ListItemText>Tracks</ListItemText>
-                        </ListItem>
-                    </List>
-            </div>
-        </Container>
-    )
+	let savedSongs = [1, 2, 3];
+
+	function addSong(prop) {
+		console.log(1);
+		console.log(prop);
+	}
+	function removeSong() {}
+
+	return (
+		<Grid className={classes.root}>
+			<Grid container spacing={3}>
+				<Grid item xs={6}>
+					<Paper className={classes.paper}>
+						<h2>Song items</h2>
+						{savedSongs.map((nums, i) => {
+							return <div key={i}>{nums}</div>;
+						})}
+					</Paper>
+				</Grid>
+				<Grid item xs={6}>
+					<Paper className={classes.paper}>
+						<h2>Artist items</h2>
+					</Paper>
+				</Grid>
+			</Grid>
+		</Grid>
+	);
 }

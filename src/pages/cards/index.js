@@ -6,6 +6,7 @@ import CardActions from "@material-ui/core/CardActions";
 import CardContent from "@material-ui/core/CardContent";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
+import Saved from "../saved";
 
 const useStyles = makeStyles({
 	root: {
@@ -26,10 +27,14 @@ export default function ImgMediaCard(prop) {
 					<Typography gutterBottom variant="h6" component="h2">
 						{prop.title}
 					</Typography>
-					<Typography variant="body1" color="textSecondary" component="p">
-						Трек: {prop.subtitle}
-					</Typography>
-					<Typography variant="body2" color="textSecondary" component="p">
+					{prop.subtitle ? (
+						<Typography variant="h6" color="textSecondary" component="h2">
+							Исполнитель: {prop.subtitle}
+						</Typography>
+					) : (
+						""
+					)}
+					<Typography variant="h6" color="textSecondary" component="h2">
 						Слушателей: {prop.listeners}
 					</Typography>
 				</CardContent>
@@ -40,11 +45,22 @@ export default function ImgMediaCard(prop) {
 					color="primary"
 					href={prop.url}
 					style={{
-						left: "25%",
-						top: "-25%",
+						marginLeft: "auto",
 					}}
 				>
 					Ссылка на радио
+				</Button>
+				<Button
+					onClick={() => {
+						Saved.addSong();
+					}}
+					size="small"
+					color="primary"
+					style={{
+						marginRight: "auto",
+					}}
+				>
+					Добавить
 				</Button>
 			</CardActions>
 		</Card>

@@ -45,11 +45,23 @@ export default function Search() {
 	const [IsFetching, setIsFetching] = useState(true);
 	const [data, setData] = useState([]);
 	const [url, setUrl] = useState(null);
+	const [type, setType] = useState("");
 
 	function onButtonClick(type) {
+		let typeCode = "";
+
+		if (type === "artist") {
+			setType("artist");
+			typeCode = "artist.search&artist=";
+		} else if (type === "track") {
+			setType("track");
+			typeCode = "track.search&track=";
+		} else {
+			return null;
+		}
 		let text = inputEl.current.value;
 		if (text !== "") {
-			getUrl(text, type);
+			getUrl(text, typeCode);
 		}
 	}
 
@@ -61,13 +73,22 @@ export default function Search() {
 	}
 
 	const fetchMyAPI = useCallback(async () => {
+		let sortedByListeners;
+
 		let response = await fetch(url);
 		response = await response.json();
 		setIsFetching(false);
-		let sortedByListeners = response.results.trackmatches.track;
+
+		if (type === "track") {
+			sortedByListeners = response.results.trackmatches.track;
+			console.log(sortedByListeners);
+		} else if (type === "artist") {
+			sortedByListeners = response.results.artistmatches.artist;
+			console.log(sortedByListeners);
+		}
 		sortedByListeners.sort((a, b) => a.listeners - b.listeners).reverse();
 		setData(sortedByListeners);
-	}, [url]);
+	}, [url, type]);
 
 	useEffect(() => {
 		if (url !== null) {
@@ -77,51 +98,59 @@ export default function Search() {
 
 	if (IsFetching === true) {
 		return (
-			<div>
-				<Container component="main" align="center">
-					<form className={classes.root} noValidate autoComplete="on">
-						<TextField
-							id="outlined-secondary"
-							variant="outlined"
-							color="primary"
-							placeholder="Введите строку для поиска в это поле"
-							inputRef={inputEl}
-						/>
-						<Button
-							className={classes.btn}
-							color="primary"
-							variant="contained"
-							onClick={() => {
-								onButtonClick("track.search&track=");
-							}}
-						>
-							ПЕСНЯ
-						</Button>
-					</form>
-				</Container>
-			</div>
+			<Container component="main" align="center">
+				<form className={classes.root} noValidate autoComplete="on">
+					<TextField
+						id="outlined-secondary"
+						variant="outlined"
+						color="primary"
+						placeholder="Введите строку для поиска в это поле"
+						inputRef={inputEl}
+					/>
+					<Button
+						className={classes.btn}
+						color="primary"
+						variant="contained"
+						onClick={() => {
+							onButtonClick("track");
+						}}
+					>
+						ПЕСНЯ
+					</Button>
+					<Button
+						className={classes.btn}
+						color="primary"
+						variant="contained"
+						onClick={() => {
+							onButtonClick("artist");
+						}}
+					>
+						АВТОР
+					</Button>
+				</form>
+			</Container>
 		);
 	} else {
 		return (
-			<div>
-				<div className={classes.grow}>
-					<Grid container spacing={1}>
-						{data.map((value, index) => {
-							return (
-								<Grid item xs={3} key={index}>
-									<Paper className={classes.paper}>
-										<ImgMediaCard
-											url={value.url}
-											listeners={value.listeners}
-											title={value.name}
-											subtitle={value.artist}
-										/>
-									</Paper>
-								</Grid>
-							);
-						})}
-					</Grid>
-				</div>
+			<div className={classes.grow}>
+				<Grid container spacing={1}>
+					{data.map((value, index) => {
+						return (
+							<Grid item xs={3} key={index}>
+								<Paper className={classes.paper}>
+									<ImgMediaCard
+										url={value.url}
+										mbid={value.mbid}
+										listeners={value.listeners}
+										title={value.name}
+										subtitle={value.artist}
+									/>
+								</Paper>
+							</Grid>
+						);
+					})}
+				</Grid>
+
 				<Container component="main" maxWidth="sm" align="center">
 					<Button
 						className={classes.btn}
