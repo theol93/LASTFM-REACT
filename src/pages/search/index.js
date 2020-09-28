@@ -23,7 +23,7 @@ export default function Search() {
 			marginTop: "15px",
 			marginLeft: "5px",
 			maxWidth: "20vw",
-			height: "20vh",
+			height: "25vh",
 			padding: theme.spacing(1),
 			textAlign: "center",
 			color: theme.palette.text.secondary,

@@ -11,13 +11,12 @@ import Saved from "../saved";
 const useStyles = makeStyles({
 	root: {
 		width: "20vw",
-		height: "20vh",
+		height: "25vh",
 		backgroundColor: "rgb(245, 245, 245)",
 	},
 	size: {
 	whiteSpace: 'nowrap', /* Отменяем перенос текста */
 	overflow: 'hidden', /* Обрезаем содержимое */
-	padding: "5px", /* Поля */
 	textOverflow: 'ellipsis', /* Многоточие */
 },
 	sizeHover: {
@@ -37,17 +36,17 @@ export default function ImgMediaCard(prop) {
 						{prop.title}
 					</Typography>
 					{prop.subtitle ? (
-						<Typography variant="subtitle2" color="textSecondary" component="subtitle2">
-							Исполнитель: {prop.subtitle}
+						<Typography variant="subtitle2" color="textSecondary" component="subtitle2" className={classes.size}>
+                            <p>Исполнитель: {prop.subtitle}</p>
 						</Typography>
 					) : (
 						""
 					)}
-					<Typography variant="subtitle2" color="textSecondary" component="subtitle2">
-						Слушателей: {prop.listeners}
+					<Typography variant="subtitle2" color="textSecondary" component="subtitle2" className={classes.size}>
+                        <p>Слушателей: {prop.listeners}</p>
 					</Typography>
 				</CardContent>
-				<CardActions style={{ height: "5vh" }}>
+				<CardActions style={{ height: "10vh" }}>
 					<Button
 						size="small"
 						color="primary"
