@@ -10,11 +10,20 @@ import Saved from "../saved";
 
 const useStyles = makeStyles({
 	root: {
-		maxWidth: "300px",
-		width: "300px",
-		height: "250px",
+		width: "20vw",
+		height: "20vh",
 		backgroundColor: "rgb(245, 245, 245)",
 	},
+	size: {
+	whiteSpace: 'nowrap', /* Отменяем перенос текста */
+	overflow: 'hidden', /* Обрезаем содержимое */
+	padding: "5px", /* Поля */
+	textOverflow: 'ellipsis', /* Многоточие */
+},
+	sizeHover: {
+	background: "#f0f0f0", /* Цвет фона */
+	whiteSpace: "normal", /* Обычный перенос текста */
+}
 });
 
 export default function ImgMediaCard(prop) {
@@ -22,47 +31,42 @@ export default function ImgMediaCard(prop) {
 
 	return (
 		<Card className={classes.root}>
-			<CardActionArea style={{ height: "200px" }}>
+			<CardActionArea style={{ height: "15vh" }}>
 				<CardContent>
-					<Typography gutterBottom variant="h6" component="h2">
+					<Typography gutterBottom variant="h6" component="h2" className={classes.size}>
 						{prop.title}
 					</Typography>
 					{prop.subtitle ? (
-						<Typography variant="h6" color="textSecondary" component="h2">
+						<Typography variant="subtitle2" color="textSecondary" component="subtitle2">
 							Исполнитель: {prop.subtitle}
 						</Typography>
 					) : (
 						""
 					)}
-					<Typography variant="h6" color="textSecondary" component="h2">
+					<Typography variant="subtitle2" color="textSecondary" component="subtitle2">
 						Слушателей: {prop.listeners}
 					</Typography>
 				</CardContent>
+				<CardActions style={{ height: "5vh" }}>
+					<Button
+						size="small"
+						color="primary"
+						href={prop.url}
+					>
+						Ссылка на радио
+					</Button>
+					<Button
+						onClick={() => {
+							Saved.addSong();
+						}}
+						size="small"
+						color="primary"
+					>
+						Добавить
+					</Button>
+				</CardActions>
 			</CardActionArea>
-			<CardActions style={{ height: "50px" }}>
-				<Button
-					size="small"
-					color="primary"
-					href={prop.url}
-					style={{
-						marginLeft: "auto",
-					}}
-				>
-					Ссылка на радио
-				</Button>
-				<Button
-					onClick={() => {
-						Saved.addSong();
-					}}
-					size="small"
-					color="primary"
-					style={{
-						marginRight: "auto",
-					}}
-				>
-					Добавить
-				</Button>
-			</CardActions>
+
 		</Card>
 	);
 }
