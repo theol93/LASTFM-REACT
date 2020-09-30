@@ -123,7 +123,7 @@ export default function SignUp() {
                     </Button>
                     <Grid container justify="flex-end">
                         <Grid item>
-                            <Link href="/login" variant="body2">
+                            <Link variant="body2" href="/login" >
                                 У вас есть аккаунт? Войти
                             </Link>
                         </Grid>

@@ -10,6 +10,7 @@ import Grid from "@material-ui/core/Grid";
 export default function Search() {
 	const useStyles = makeStyles((theme) => ({
 		grow: {
+			marginTop: "10px",
 			flexGrow: 1,
 		},
 		root: {
@@ -20,12 +21,7 @@ export default function Search() {
 			},
 		},
 		paper: {
-			marginTop: "15px",
-			marginLeft: "5px",
-			maxWidth: "20vw",
-			height: "25vh",
-			padding: theme.spacing(1),
-			textAlign: "center",
+
 			color: theme.palette.text.secondary,
 			backgroundColor: "rgb(240,240,240)",
 		},
@@ -133,10 +129,10 @@ export default function Search() {
 	} else {
 		return (
 			<div className={classes.grow}>
-				<Grid container spacing={1}>
+				<Grid container spacing={2}>
 					{data.map((value, index) => {
 						return (
-							<Grid item xs={3} key={index}>
+							<Grid item  xs={6} sm={3} key={index}>
 								<Paper className={classes.paper}>
 									<ImgMediaCard
 										url={value.url}
