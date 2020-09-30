@@ -20,12 +20,6 @@ export default function Saved(prop) {
 
 	let savedSongs = [1, 2, 3];
 
-	function addSong(prop) {
-		console.log(1);
-		console.log(prop);
-	}
-	function removeSong() {}
-
 	return (
 		<Grid className={classes.root}>
 			<Grid container spacing={3}>

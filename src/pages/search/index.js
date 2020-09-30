@@ -77,10 +77,8 @@ export default function Search() {
 
 		if (type === "track") {
 			sortedByListeners = response.results.trackmatches.track;
-			console.log(sortedByListeners);
 		} else if (type === "artist") {
 			sortedByListeners = response.results.artistmatches.artist;
-			console.log(sortedByListeners);
 		}
 		sortedByListeners.sort((a, b) => a.listeners - b.listeners).reverse();
 		setData(sortedByListeners);
