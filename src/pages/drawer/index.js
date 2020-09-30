@@ -4,9 +4,7 @@ import Paper from "@material-ui/core/Paper";
 import Tabs from "@material-ui/core/Tabs";
 import Tab from "@material-ui/core/Tab";
 import { Link } from "react-router-dom";
-import ExitToAppIcon from "@material-ui/icons/ExitToApp";
 import LockOpenIcon from "@material-ui/icons/LockOpen";
-import NotInterestedIcon from "@material-ui/icons/NotInterested";
 import SearchIcon from "@material-ui/icons/Search";
 import FavoriteBorderIcon from "@material-ui/icons/FavoriteBorder";
 
@@ -36,19 +34,9 @@ export default function CenteredTabs() {
 			icon: <FavoriteBorderIcon />
 		},
 		{
-			label:"404",
-			to:"/page404",
-			icon: <NotInterestedIcon />
-		},
-		{
 			label:"ЛОГИН",
 			to:"/login",
 			icon:<LockOpenIcon />
-		},
-		{
-			label:"РЕГИСТРАЦИЯ",
-			to:"/register",
-			icon: <ExitToAppIcon />
 		},
 	];
 

@@ -3,7 +3,6 @@ import Search from "../pages/search/index";
 import Page404 from "../pages/page404/index";
 import Login from "../pages/login/index";
 import Drawer from "../pages/drawer/index";
-import Register from "../pages/register/index";
 import Result from "../pages/result";
 import React from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
@@ -24,9 +23,6 @@ export default function App() {
 					</Route>
 					<Route path="/login">
 						<Login />
-					</Route>
-					<Route path="/register">
-						<Register />
 					</Route>
 					<Route path="/result">
 						<Result />

@@ -6,25 +6,10 @@ import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Checkbox from '@material-ui/core/Checkbox';
 import Link from '@material-ui/core/Link';
 import Grid from '@material-ui/core/Grid';
-import Box from '@material-ui/core/Box';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
-import {Link as RouterLink} from "react-router-dom";
-
-function Copyright() {
-    return (
-        <Typography variant="body2" color="textSecondary" align="center">
-            {'Copyright © '}
-            <Link color="inherit" href="https://material-ui.com/">
-                Material UI
-            </Link>{' '}
-            {new Date().getFullYear()}
-            {'.'}
-        </Typography>
-    );
-}
 
 const useStyles = makeStyles((theme) => ({
     paper: {
@@ -52,12 +37,14 @@ export default function SignIn() {
     return (
         <Container component="main" maxWidth="sm" align="center">
             <div className={classes.paper}>
+
                 <Avatar className={classes.avatar}>
                     <LockOutlinedIcon />
                 </Avatar>
                 <Typography component="h1" variant="h5">
                     Войти
                 </Typography>
+
                 <form className={classes.form} noValidate>
                     <TextField
                         variant="outlined"
@@ -94,23 +81,30 @@ export default function SignIn() {
                     >
                         Войти
                     </Button>
+                    <Button
+                        type="submit"
+                        fullWidth
+                        variant="contained"
+                        color="default"
+                        className={classes.submit}
+                        href={"https://www.last.fm/ru/join" }
+                        target="_blank"
+                    >
+                        Нет аккаунта? Регистрация
+                    </Button>
                     <Grid container>
                         <Grid item xs>
                             <Link href="#" variant="body2">
                                 Забыли пароль?
                             </Link>
                         </Grid>
-                        <Grid item>
-                            <Link component={ RouterLink } to="/register" variant="body2">
-                                {"Нет аккаунта? Регистрация"}
-                            </Link>
-                        </Grid>
                     </Grid>
                 </form>
             </div>
-            <Box mt={8}>
-                <Copyright />
-            </Box>
         </Container>
     );
 }
+/*
+    Login: theol1993
+    Password: !1111qqqq
+ */

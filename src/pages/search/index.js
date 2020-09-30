@@ -15,18 +15,17 @@ export default function Search() {
 		},
 		root: {
 			"& > *": {
-				marginTop: "64px",
+				marginTop: "25px",
 				margin: theme.spacing(1),
 				width: "500px",
 			},
 		},
 		paper: {
-
 			color: theme.palette.text.secondary,
 			backgroundColor: "rgb(240,240,240)",
 		},
 		btn: {
-			marginTop: "64px",
+			marginTop: "25px",
 			border: 0,
 			marginLeft: "15px",
 			borderRadius: 13,
@@ -90,7 +89,7 @@ export default function Search() {
 		}
 	}, [url, fetchMyAPI]);
 
-	if (IsFetching === true) {
+
 		return (
 			<Container component="main" align="center">
 				<form className={classes.root} noValidate autoComplete="on">
@@ -122,42 +121,28 @@ export default function Search() {
 						АВТОР
 					</Button>
 				</form>
-			</Container>
-		);
-	} else {
-		return (
-			<div className={classes.grow}>
-				<Grid container spacing={2}>
-					{data.map((value, index) => {
-						return (
-							<Grid item  xs={6} sm={3} key={index}>
-								<Paper className={classes.paper}>
-									<ImgMediaCard
-										url={value.url}
-										mbid={value.mbid}
-										listeners={value.listeners}
-										title={value.name}
-										subtitle={value.artist}
-									/>
-								</Paper>
-							</Grid>
-						);
-					})}
-				</Grid>
 
-				<Container component="main" maxWidth="sm" align="center">
-					<Button
-						className={classes.btn}
-						variant="contained"
-						color="primary"
-						onClick={() => {
-							setIsFetching(true);
-						}}
-					>
-						НАЗАД
-					</Button>
-				</Container>
-			</div>
-		);
-	}
+				{(IsFetching !== true) ?
+					(<div className={classes.grow}>
+						<Grid container spacing={2}>
+						{data.map((value, index) => {
+							return (
+								<Grid item  xs={6} sm={3} key={index}>
+									<Paper className={classes.paper}>
+										<ImgMediaCard
+											url={value.url}
+											mbid={value.mbid}
+											listeners={value.listeners}
+											title={value.name}
+											subtitle={value.artist}
+										/>
+									</Paper>
+								</Grid>
+							);
+						})}
+						</Grid>
+					</div>)
+				 : ""}
+			</Container>
+			)
 }
