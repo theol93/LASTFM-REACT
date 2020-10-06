@@ -72,6 +72,8 @@ export default function Search() {
 
 		let response = await fetch(url);
 		response = await response.json();
+		console.log(response)
+		console.log(url)
 		setIsFetching(false);
 
 		if (type === "track") {

@@ -1,4 +1,4 @@
-import React, { useEffect} from "react";
+import React, {useEffect} from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Paper from "@material-ui/core/Paper";
 import Tabs from "@material-ui/core/Tabs";
@@ -14,41 +14,76 @@ const useStyles = makeStyles({
 	},
 });
 
+
+
 export default function CenteredTabs() {
 	const classes = useStyles();
+
 	const [value, setValue] = React.useState(0);
+	const [path, setPath] = React.useState(window.location.pathname);
+	const [pages, setPages] = React.useState([]);
+	let [depsPages, getDepsPages] = React.useState([localStorage.getItem("name")])
 
 	const handleChange = (event, newValue) => {
 		setValue(newValue);
 	};
 
-	const pages = [
-		{
-			label: "ПОИСК",
-			to: "/",
-			icon:  <SearchIcon/>
-		},
-		{
-			label:"СОХРАНЕННЫЕ",
-			to:"/saved",
-			icon: <FavoriteBorderIcon />
-		},
-		{
-			label:"ЛОГИН",
-			to:"/login",
-			icon:<LockOpenIcon />
-		},
-	];
 
-	 useEffect(() => {
-		 let path = window.location.pathname;
-		 pages.find((el, i)=> {
-			 if(path === el.to) {
-				 return setValue(i);
-			 } else {
-				 return null
-			 }
-	})}, [pages]);
+
+	useEffect(()=> {
+		setPath(window.location.pathname);
+		pages.find((el, i)=> {
+			if(path === el.to) {
+				return setValue(i);
+			} else {
+				return null
+			}
+		});
+	}, [path, pages]);
+
+	useEffect(()=> {
+		function getPage(){
+			depsPages !== null ?
+				setPages([
+					{
+						label: "ПОИСК",
+						to: "/",
+						icon:  <SearchIcon/>
+					},
+					{
+						label:"СОХРАНЕННЫЕ",
+						to:"/saved",
+						icon: <FavoriteBorderIcon />
+					},
+					{
+						label: depsPages,
+						to: "/user",
+						icon: <LockOpenIcon/>
+					}
+				])
+				:
+				setPages([
+					{
+						label: "ПОИСК",
+						to: "/",
+						icon:  <SearchIcon/>
+					},
+					{
+						label:"ЛОГИН",
+						to:"/login",
+						icon:<LockOpenIcon />
+					}
+				])
+		}
+
+		getPage()
+		console.log("deps",depsPages)
+		}, [depsPages]);
+
+	useEffect(()=> {
+		getDepsPages(localStorage.getItem("name"));
+		console.log("init", )
+	},)
 
 	return (
 		<Paper className={classes.root}>

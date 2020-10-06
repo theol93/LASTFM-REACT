@@ -4,7 +4,6 @@ import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
-import Saved from "../saved";
 import FavoriteBorderSharpIcon from '@material-ui/icons/FavoriteBorderSharp';
 
 const useStyles = makeStyles({
@@ -38,11 +37,11 @@ export default function ImgMediaCard(prop) {
 						{prop.title}
 					</Typography>
 						{prop.subtitle ? (
-							<Typography variant="subtitle2" color="textSecondary" component="subtitle2" className={classes.size}>
+							<Typography variant="subtitle2" color="textSecondary" component="h6" className={classes.size}>
                             	<p>Исполнитель: {prop.subtitle}</p>
 							</Typography>
 						) : ("")}
-					<Typography variant="subtitle2" color="textSecondary" component="subtitle2" className={classes.size}>
+					<Typography variant="subtitle2" color="textSecondary" component="h6" className={classes.size}>
                         <p>Слушателей: {prop.listeners}</p>
 					</Typography>
 					<Button
@@ -56,7 +55,7 @@ export default function ImgMediaCard(prop) {
 					<Button
 						className={classes.btn}
 						onClick={() => {
-							Saved.addSong();
+
 						}}
 						size="small"
 						color="primary"

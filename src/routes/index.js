@@ -4,6 +4,8 @@ import Page404 from "../pages/page404/index";
 import Login from "../pages/login/index";
 import Drawer from "../pages/drawer/index";
 import Result from "../pages/result";
+import Token from "../pages/token"
+import User from "../pages/user"
 import React from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
@@ -26,6 +28,12 @@ export default function App() {
 					</Route>
 					<Route path="/result">
 						<Result />
+					</Route>
+					<Route path="/token">
+						<Token />
+					</Route>
+					<Route path="/user">
+						<User />
 					</Route>
 					<Route path="*">
 						<Page404 />

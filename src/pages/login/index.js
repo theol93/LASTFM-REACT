@@ -1,22 +1,13 @@
 import React from 'react';
-import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
-import TextField from '@material-ui/core/TextField';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-import Checkbox from '@material-ui/core/Checkbox';
-import Link from '@material-ui/core/Link';
-import Grid from '@material-ui/core/Grid';
-import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
-import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
+import Grid from "@material-ui/core/Grid";
 
 const useStyles = makeStyles((theme) => ({
     paper: {
         marginTop: theme.spacing(8),
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'center',
+        margin: "10px",
     },
     avatar: {
         margin: theme.spacing(1),
@@ -26,9 +17,9 @@ const useStyles = makeStyles((theme) => ({
         width: '100%', // Fix IE 11 issue.
         marginTop: theme.spacing(1),
     },
-    submit: {
+    /* submit: {
         margin: theme.spacing(3, 0, 2),
-    },
+    },*/
 }));
 
 export default function SignIn() {
@@ -37,69 +28,42 @@ export default function SignIn() {
     return (
         <Container component="main" maxWidth="sm" align="center">
             <div className={classes.paper}>
-
-                <Avatar className={classes.avatar}>
-                    <LockOutlinedIcon />
-                </Avatar>
-                <Typography component="h1" variant="h5">
-                    Войти
-                </Typography>
-
-                <form className={classes.form} noValidate>
-                    <TextField
-                        variant="outlined"
-                        margin="normal"
-                        required
-                        fullWidth
-                        id="email"
-                        label="Почта"
-                        name="email"
-                        autoComplete="email"
-                        autoFocus
-                    />
-                    <TextField
-                        variant="outlined"
-                        margin="normal"
-                        required
-                        fullWidth
-                        name="password"
-                        label="Пароль"
-                        type="password"
-                        id="password"
-                        autoComplete="current-password"
-                    />
-                    <FormControlLabel
-                        control={<Checkbox value="remember" color="primary" />}
-                        label="Запомнить данные"
-                    />
-                    <Button
-                        type="submit"
-                        fullWidth
-                        variant="contained"
-                        color="primary"
-                        className={classes.submit}
-                    >
-                        Войти
-                    </Button>
-                    <Button
-                        type="submit"
-                        fullWidth
-                        variant="contained"
-                        color="default"
-                        className={classes.submit}
-                        href={"https://www.last.fm/ru/join" }
-                        target="_blank"
-                    >
-                        Нет аккаунта? Регистрация
-                    </Button>
-                    <Grid container>
-                        <Grid item xs>
-                            <Link href="#" variant="body2">
-                                Забыли пароль?
-                            </Link>
+                <Grid container className={classes.root} spacing={2}>
+                    <Grid item xs={12}>
+                        <Grid container justify="center">
+                            <Grid key={0} item className={classes.paper}>
+                            <Button
+                                type="submit"
+                                fullWidth
+                                variant="contained"
+                                color="primary"
+                                className={classes.submit}
+                                href={"http://www.last.fm/api/auth/?api_key=e9fcdc63353cd735a0d4ae4cbf86ab6a"}
+                            >
+                                Войти
+                            </Button>
+                            </Grid>
+                            <Grid key={1} item className={classes.paper}>
+                            <Button
+                                type="submit"
+                                fullWidth
+                                variant="contained"
+                                color="default"
+                                className={classes.submit}
+                                href={"https://www.last.fm/ru/join" }
+                                target="_blank"
+                        >
+                                Зарегистрироваться
+                            </Button>
+                            </Grid>
                         </Grid>
+                        <div key={2} style={{"color": "grey", "paddingTop": "50px"}}>
+                            <h2>Test data for LastFM:</h2>
+                            <h3>Login: theol1993</h3>
+                            <h3>Password: !1111qqqq</h3>
+                        </div>
                     </Grid>
-                </form>
+                </Grid>
             </div>
         </Container>
     );
@@ -107,4 +71,14 @@ export default function SignIn() {
 /*
     Login: theol1993
     Password: !1111qqqq
+
+
+    Application name	react last-fm
+    API key	e9fcdc63353cd735a0d4ae4cbf86ab6a
+    Shared secret	72f025ee47b0cc1d710967db9d1a6202
+    Registered to	theol1993
+
+    api_key[e9fcdc63353cd735a0d4ae4cbf86ab6a]methodauth.getSessiontoken[my token][72f025ee47b0cc1d710967db9d1a6202]
+
+    ws.audioscrobbler.com/2.0/?method=auth.getSession&token=[маркер]&api_key=[ключ api]&api_sig=[мой новый MD5 в выходной]
  */
