@@ -7,9 +7,7 @@ import Button from "@material-ui/core/Button";
 export default function () {
 	return (
 		<Container component="main" maxWidth="sm" align="center">
-			<div className={styles.head}>
-				Страница не найдена...
-			</div>
+			<div className={styles.head}>Страница не найдена...</div>
 
 			<div className={styles.body}>
 				<img src={logo} height={"400px"} alt={404} />

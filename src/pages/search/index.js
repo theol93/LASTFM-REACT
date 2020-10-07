@@ -72,8 +72,8 @@ export default function Search() {
 
 		let response = await fetch(url);
 		response = await response.json();
-		console.log(response)
-		console.log(url)
+		console.log(response);
+		console.log(url);
 		setIsFetching(false);
 
 		if (type === "track") {
@@ -91,45 +91,44 @@ export default function Search() {
 		}
 	}, [url, fetchMyAPI]);
 
+	return (
+		<Container component="main" align="center">
+			<form className={classes.root} noValidate autoComplete="on">
+				<TextField
+					id="outlined-secondary"
+					variant="outlined"
+					color="primary"
+					placeholder="Введите строку для поиска в это поле"
+					inputRef={inputEl}
+				/>
+				<Button
+					className={classes.btn}
+					color="primary"
+					variant="contained"
+					onClick={() => {
+						onButtonClick("track");
+					}}
+				>
+					ПЕСНЯ
+				</Button>
+				<Button
+					className={classes.btn}
+					color="primary"
+					variant="contained"
+					onClick={() => {
+						onButtonClick("artist");
+					}}
+				>
+					АВТОР
+				</Button>
+			</form>
 
-		return (
-			<Container component="main" align="center">
-				<form className={classes.root} noValidate autoComplete="on">
-					<TextField
-						id="outlined-secondary"
-						variant="outlined"
-						color="primary"
-						placeholder="Введите строку для поиска в это поле"
-						inputRef={inputEl}
-					/>
-					<Button
-						className={classes.btn}
-						color="primary"
-						variant="contained"
-						onClick={() => {
-							onButtonClick("track");
-						}}
-					>
-						ПЕСНЯ
-					</Button>
-					<Button
-						className={classes.btn}
-						color="primary"
-						variant="contained"
-						onClick={() => {
-							onButtonClick("artist");
-						}}
-					>
-						АВТОР
-					</Button>
-				</form>
-
-				{(IsFetching !== true) ?
-					(<div className={classes.grow}>
-						<Grid container spacing={2}>
+			{IsFetching !== true ? (
+				<div className={classes.grow}>
+					<Grid container spacing={2}>
 						{data.map((value, index) => {
 							return (
-								<Grid item  xs={6} sm={3} key={index}>
+								<Grid item xs={6} sm={3} key={index}>
 									<Paper className={classes.paper}>
 										<ImgMediaCard
 											url={value.url}
@@ -142,9 +141,11 @@ export default function Search() {
 								</Grid>
 							);
 						})}
-						</Grid>
-					</div>)
-				 : ""}
-			</Container>
-			)
+					</Grid>
+				</div>
+			) : (
+				""
+			)}
+		</Container>
+	);
 }

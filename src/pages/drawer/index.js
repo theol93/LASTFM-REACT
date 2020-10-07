@@ -1,4 +1,4 @@
-import React, {useEffect} from "react";
+import React, { useEffect } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Paper from "@material-ui/core/Paper";
 import Tabs from "@material-ui/core/Tabs";
@@ -14,76 +14,68 @@ const useStyles = makeStyles({
 	},
 });
 
-
-
 export default function CenteredTabs() {
 	const classes = useStyles();
 
 	const [value, setValue] = React.useState(0);
 	const [path, setPath] = React.useState(window.location.pathname);
 	const [pages, setPages] = React.useState([]);
-	let [depsPages, getDepsPages] = React.useState([localStorage.getItem("name")])
+	const [depsPages, getDepsPages] = React.useState(null);
 
 	const handleChange = (event, newValue) => {
 		setValue(newValue);
 	};
 
-
-
-	useEffect(()=> {
+	useEffect(() => {
 		setPath(window.location.pathname);
-		pages.find((el, i)=> {
-			if(path === el.to) {
+		pages.find((el, i) => {
+			if (path === el.to) {
 				return setValue(i);
 			} else {
-				return null
+				return null;
 			}
 		});
 	}, [path, pages]);
 
-	useEffect(()=> {
-		function getPage(){
-			depsPages !== null ?
-				setPages([
-					{
-						label: "ПОИСК",
-						to: "/",
-						icon:  <SearchIcon/>
-					},
-					{
-						label:"СОХРАНЕННЫЕ",
-						to:"/saved",
-						icon: <FavoriteBorderIcon />
-					},
-					{
-						label: depsPages,
-						to: "/user",
-						icon: <LockOpenIcon/>
-					}
-				])
-				:
-				setPages([
-					{
-						label: "ПОИСК",
-						to: "/",
-						icon:  <SearchIcon/>
-					},
-					{
-						label:"ЛОГИН",
-						to:"/login",
-						icon:<LockOpenIcon />
-					}
-				])
-		}
-
-		getPage()
-		console.log("deps",depsPages)
-		}, [depsPages]);
-
-	useEffect(()=> {
-		getDepsPages(localStorage.getItem("name"));
-		console.log("init", )
-	},)
+	useEffect(() => {
+		(function () {
+			depsPages !== null
+				? (function () {
+						return setPages([
+							{
+								label: "ПОИСК",
+								to: "/",
+								icon: <SearchIcon />,
+							},
+							{
+								label: "СОХРАНЕННЫЕ",
+								to: "/saved",
+								icon: <FavoriteBorderIcon />,
+							},
+							{
+								label: depsPages,
+								to: "/user",
+								icon: <LockOpenIcon />,
+							},
+						]);
+				  })()
+				: (function () {
+						getDepsPages(localStorage.getItem("name"));
+						setPages([
+							{
+								label: "ПОИСК",
+								to: "/",
+								icon: <SearchIcon />,
+							},
+							{
+								label: "ЛОГИН",
+								to: "/login",
+								icon: <LockOpenIcon />,
+							},
+						]);
+				  })();
+		})();
+	}, [depsPages]);
 
 	return (
 		<Paper className={classes.root}>
@@ -95,17 +87,9 @@ export default function CenteredTabs() {
 				centered
 			>
 				{pages.map((el, index) => {
-					return(
-						<Tab
-							component={Link}
-							{...el}
-							key={index}
-						/>
-						);
+					return <Tab component={Link} {...el} key={index} />;
 				})}
 			</Tabs>
 		</Paper>
 	);
 }
-
-
