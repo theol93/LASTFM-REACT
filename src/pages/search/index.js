@@ -3,15 +3,26 @@ import Button from "@material-ui/core/Button";
 import { makeStyles } from "@material-ui/core/styles";
 import TextField from "@material-ui/core/TextField";
 import Container from "@material-ui/core/Container";
-import ImgMediaCard from "../cards/index";
 import Paper from "@material-ui/core/Paper";
-import Grid from "@material-ui/core/Grid";
+import List from "@material-ui/core/List";
+import ListItem from "@material-ui/core/ListItem";
+import ListItemAvatar from "@material-ui/core/ListItemAvatar/ListItemAvatar";
+import ListItemText from "@material-ui/core/ListItemText/ListItemText";
+import ListItemSecondaryAction from "@material-ui/core/ListItemSecondaryAction/ListItemSecondaryAction";
+import IconButton from "@material-ui/core/IconButton";
+import DeleteIcon from "@material-ui/icons/Delete";
+import PlayArrowIcon from "@material-ui/icons/PlayArrow";
+import AlbumIcon from "@material-ui/icons/Album";
 
 export default function Search() {
 	const useStyles = makeStyles((theme) => ({
 		grow: {
-			marginTop: "10px",
 			flexGrow: 1,
+			width: "65vw",
+		},
+		demo: {
+			position: "center",
+			backgroundColor: "rgb(245, 245, 245)",
 		},
 		root: {
 			"& > *": {
@@ -42,6 +53,10 @@ export default function Search() {
 	const [url, setUrl] = useState(null);
 	const [type, setType] = useState("");
 
+	function ListItemLink(props) {
+		return <ListItem button component="a" {...props} />;
+	}
+
 	function onButtonClick(type) {
 		let typeCode = "";
 
@@ -68,21 +83,24 @@ export default function Search() {
 	}
 
 	const fetchMyAPI = useCallback(async () => {
+		let cleanupFunction = false;
 		let sortedByListeners;
 
 		let response = await fetch(url);
 		response = await response.json();
-		console.log(response);
-		console.log(url);
-		setIsFetching(false);
 
-		if (type === "track") {
-			sortedByListeners = response.results.trackmatches.track;
-		} else if (type === "artist") {
-			sortedByListeners = response.results.artistmatches.artist;
+		if (!cleanupFunction) {
+			setIsFetching(false);
+			if (type === "track") {
+				sortedByListeners = response.results.trackmatches.track;
+			} else if (type === "artist") {
+				sortedByListeners = response.results.artistmatches.artist;
+			}
+			sortedByListeners.sort((a, b) => a.listeners - b.listeners).reverse();
+			setData(sortedByListeners);
 		}
-		sortedByListeners.sort((a, b) => a.listeners - b.listeners).reverse();
-		setData(sortedByListeners);
+
+		return () => (cleanupFunction = true);
 	}, [url, type]);
 
 	useEffect(() => {
@@ -124,25 +142,43 @@ export default function Search() {
 			</form>
 
 			{IsFetching !== true ? (
-				<div className={classes.grow}>
-					<Grid container spacing={2}>
-						{data.map((value, index) => {
-							return (
-								<Grid item xs={6} sm={3} key={index}>
-									<Paper className={classes.paper}>
-										<ImgMediaCard
-											url={value.url}
-											mbid={value.mbid}
-											listeners={value.listeners}
-											title={value.name}
-											subtitle={value.artist}
-										/>
-									</Paper>
-								</Grid>
-							);
-						})}
-					</Grid>
-				</div>
+				<Container align="center" className={classes.grow}>
+					{data.map((value, index) => {
+						return (
+							<Paper key={index}>
+								<div className={classes.demo}>
+									<List>
+										{
+											<ListItem>
+												<ListItemAvatar>
+													<AlbumIcon />
+												</ListItemAvatar>
+												<ListItemText
+													primary={value.name}
+													secondary={value.artist}
+												/>
+												<Button variant="contained">
+													<ListItemLink href={value.url} target={"_blank"}>
+														<PlayArrowIcon />
+													</ListItemLink>
+												</Button>
+												<ListItemSecondaryAction>
+													<IconButton
+														edge="end"
+														variant="contained"
+														aria-label="delete"
+													>
+														<DeleteIcon />
+													</IconButton>
+												</ListItemSecondaryAction>
+											</ListItem>
+										}
+									</List>
+								</div>
+							</Paper>
+						);
+					})}
+				</Container>
 			) : (
 				""
 			)}
