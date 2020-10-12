@@ -42,7 +42,7 @@ export default function User() {
 										localStorage.clear();
 									}}
 								>
-									Выйти
+									Выйти из аккаунта
 								</Button>
 							</Grid>
 						</Grid>
