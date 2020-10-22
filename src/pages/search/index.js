@@ -10,9 +10,12 @@ import ListItemAvatar from "@material-ui/core/ListItemAvatar/ListItemAvatar";
 import ListItemText from "@material-ui/core/ListItemText/ListItemText";
 import ListItemSecondaryAction from "@material-ui/core/ListItemSecondaryAction/ListItemSecondaryAction";
 import IconButton from "@material-ui/core/IconButton";
-import DeleteIcon from "@material-ui/icons/Delete";
 import PlayArrowIcon from "@material-ui/icons/PlayArrow";
 import AlbumIcon from "@material-ui/icons/Album";
+import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
+import FavoriteIcon from '@material-ui/icons/Favorite';
+
+import md5 from "md5";
 
 export default function Search() {
 	const useStyles = makeStyles((theme) => ({
@@ -55,6 +58,46 @@ export default function Search() {
 
 	function ListItemLink(props) {
 		return <ListItem button component="a" {...props} />;
+	}
+
+	function getApiSignature(params) {
+		let keys = Object.keys(params);
+		let string = "";
+
+		keys.sort();
+		keys.forEach(function (key) {
+			string += key + params[key];
+		});
+
+		string += "72f025ee47b0cc1d710967db9d1a6202";
+		console.log("str: ",string)
+		/* Needs lastfm.api.md5.js. */
+		return md5(string);
+	}
+
+	async function trackLove(e, track, artist) {
+		let params = {};
+
+		let url = "http://ws.audioscrobbler.com/2.0/?method=track.love";
+		let track_url = "&track=" + encodeURI(track);
+		let artist_url = "&artist=" + encodeURI(artist);
+		let api_key = "&api_key=e9fcdc63353cd735a0d4ae4cbf86ab6a";
+		let sk = "&sk=" + localStorage.getItem("key");
+
+		params.method = "track.love";
+		params.api_key = "e9fcdc63353cd735a0d4ae4cbf86ab6a";
+		params.sk = localStorage.getItem("key");
+		params.track = track;
+		params.artist = artist;
+
+		let api_sig = getApiSignature(params);
+		let api_sigStr = "&api_sig=" + api_sig;
+		let urlFull =
+			url + track_url + artist_url + api_key + api_sigStr + sk + "&format=json";
+		console.log("URL:", api_sig);
+
+		await fetch(urlFull, { method: "POST" });
+		window.location.href = ("/saved");
 	}
 
 	function onButtonClick(type) {
@@ -108,6 +151,11 @@ export default function Search() {
 			fetchMyAPI();
 		}
 	}, [url, fetchMyAPI]);
+
+	function isLoved(props){
+		console.log(props)
+		//if() return (<FavoriteBorderIcon />) else return (<FavoriteIcon />)
+	}
 
 	return (
 		<Container component="main" align="center">
@@ -167,8 +215,9 @@ export default function Search() {
 														edge="end"
 														variant="contained"
 														aria-label="delete"
+														onClick={(e) => trackLove(e, value.name, value.artist)}
 													>
-														<DeleteIcon />
+														<FavoriteBorderIcon />
 													</IconButton>
 												</ListItemSecondaryAction>
 											</ListItem>

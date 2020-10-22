@@ -20,7 +20,7 @@ export default function Token() {
 			"&api_key=e9fcdc63353cd735a0d4ae4cbf86ab6a&api_sig=" +
 			md5Hash +
 			"&format=json";
-
+		localStorage.setItem("url", url);
 		let response = await fetch(url);
 		response = await response.json();
 

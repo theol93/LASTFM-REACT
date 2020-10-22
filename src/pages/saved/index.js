@@ -15,6 +15,7 @@ import PlayArrowIcon from "@material-ui/icons/PlayArrow";
 import Button from "@material-ui/core/Button";
 import Tabs from "@material-ui/core/Tabs";
 import Tab from "@material-ui/core/Tab";
+import md5 from "md5";
 
 const useStyles = makeStyles((theme) => ({
 	root: {
@@ -51,6 +52,45 @@ export default function Saved() {
 		return <ListItem button component="a" {...props} />;
 	}
 
+	function getApiSignature(params) {
+		let keys = Object.keys(params);
+		let string = "";
+
+		keys.sort();
+		keys.forEach(function (key) {
+			string += key + params[key];
+		});
+
+		string += "72f025ee47b0cc1d710967db9d1a6202";
+		console.log("str: ",string)
+		/* Needs lastfm.api.md5.js. */
+		return md5(string);
+	}
+
+	async function trackUnlove(e, track, artist) {
+		let params = {};
+
+		let url = "http://ws.audioscrobbler.com/2.0/?method=track.unlove";
+		let track_url = "&track=" + encodeURI(track);
+		let artist_url = "&artist=" + encodeURI(artist);
+		let sk = "&sk=" + localStorage.getItem("key");
+		let api_key = "&api_key=e9fcdc63353cd735a0d4ae4cbf86ab6a";
+
+		params.method = "track.unlove";
+		params.api_key = "e9fcdc63353cd735a0d4ae4cbf86ab6a";
+		params.sk = localStorage.getItem("key");
+		params.track = track;
+		params.artist = artist;
+
+		let api_sig = getApiSignature(params);
+		let api_sigStr = "&api_sig=" + api_sig;
+		let urlFull =
+			url + track_url + artist_url + api_key + api_sigStr + sk + "&format=json";
+		console.log("URL:", api_sig);
+
+		await fetch(urlFull, { method: "POST" });
+		window.location.reload();
+	}
 	const getTracks = useCallback(() => {
 		(async function () {
 			let cleanupFunction = false;
@@ -124,6 +164,13 @@ export default function Saved() {
 																	edge="end"
 																	variant="contained"
 																	aria-label="delete"
+																	onClick={(e) =>
+																		trackUnlove(
+																			e,
+																			artist.name,
+																			artist.artist.name
+																		)
+																	}
 																>
 																	<DeleteIcon />
 																</IconButton>
