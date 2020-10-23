@@ -7,6 +7,8 @@ import { Link } from "react-router-dom";
 import LockOpenIcon from "@material-ui/icons/LockOpen";
 import SearchIcon from "@material-ui/icons/Search";
 import FavoriteBorderIcon from "@material-ui/icons/FavoriteBorder";
+import AddIcon from '@material-ui/icons/Add';
+import MusicNoteIcon from '@material-ui/icons/MusicNote';
 
 const useStyles = makeStyles({
 	root: {
@@ -43,6 +45,11 @@ export default function CenteredTabs() {
 				? (function () {
 						return setPages([
 							{
+								label: "ТОП 10",
+								to: "/top",
+								icon: <MusicNoteIcon />,
+							},
+							{
 								label: "ПОИСК",
 								to: "/",
 								icon: <SearchIcon />,
@@ -53,15 +60,25 @@ export default function CenteredTabs() {
 								icon: <FavoriteBorderIcon />,
 							},
 							{
+								label: "СКРОБЛ",
+								to: "/scrobble",
+								icon: <AddIcon />
+							},
+							{
 								label: depsPages,
 								to: "/user",
 								icon: <LockOpenIcon />,
-							},
+							}
 						]);
 				  })()
 				: (function () {
 						getDepsPages(localStorage.getItem("name"));
 						setPages([
+							{
+								label: "ТОП",
+								to: "/top",
+								icon: <MusicNoteIcon />,
+							},
 							{
 								label: "ПОИСК",
 								to: "/",

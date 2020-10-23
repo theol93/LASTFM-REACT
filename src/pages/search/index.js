@@ -13,8 +13,6 @@ import IconButton from "@material-ui/core/IconButton";
 import PlayArrowIcon from "@material-ui/icons/PlayArrow";
 import AlbumIcon from "@material-ui/icons/Album";
 import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
-import FavoriteIcon from '@material-ui/icons/Favorite';
-
 import md5 from "md5";
 
 export default function Search() {
@@ -136,6 +134,7 @@ export default function Search() {
 			setIsFetching(false);
 			if (type === "track") {
 				sortedByListeners = response.results.trackmatches.track;
+
 			} else if (type === "artist") {
 				sortedByListeners = response.results.artistmatches.artist;
 			}
@@ -152,10 +151,10 @@ export default function Search() {
 		}
 	}, [url, fetchMyAPI]);
 
-	function isLoved(props){
+	/* function isLoved(props){
 		console.log(props)
 		//if() return (<FavoriteBorderIcon />) else return (<FavoriteIcon />)
-	}
+	}*/
 
 	return (
 		<Container component="main" align="center">
@@ -189,45 +188,80 @@ export default function Search() {
 				</Button>
 			</form>
 
-			{IsFetching !== true ? (
-				<Container align="center" className={classes.grow}>
-					{data.map((value, index) => {
-						return (
-							<Paper key={index}>
-								<div className={classes.demo}>
-									<List>
-										{
-											<ListItem>
-												<ListItemAvatar>
-													<AlbumIcon />
-												</ListItemAvatar>
-												<ListItemText
-													primary={value.name}
-													secondary={value.artist}
-												/>
+			{ IsFetching !== true ? (
+				(type === "track") ?
+					(<Container align="center" className={classes.grow}>
+				{data.map((value, index) => {
+					return (
+						<Paper key={index}>
+							<div className={classes.demo}>
+								<List>
+									{
+										<ListItem>
+											<ListItemAvatar>
+												<AlbumIcon />
+											</ListItemAvatar>
+											<ListItemText
+												primary={value.name}
+												secondary={value.artist}
+											/>
+											<Button variant="contained">
+												<ListItemLink href={value.url} target={"_blank"}>
+													<PlayArrowIcon />
+												</ListItemLink>
+											</Button>
+											<ListItemSecondaryAction>
+												{localStorage.getItem("name") !== null ?
+												<IconButton
+													edge="end"
+													variant="contained"
+													aria-label="delete"
+													onClick={(e) => trackLove(e, value.name, value.artist)}
+												>
+													<FavoriteBorderIcon />
+												</IconButton>
+													 : ""}
+											</ListItemSecondaryAction>
+										</ListItem>
+									}
+								</List>
+							</div>
+						</Paper>
+					);
+				})}
+				</Container>
+				) : (
+					<Container align="center" className={classes.grow}>
+				{data.map((value, index) => {
+					return (
+						<Paper key={index}>
+							<div className={classes.demo}>
+								<List>
+									{
+										<ListItem>
+											<ListItemAvatar>
+												<AlbumIcon />
+											</ListItemAvatar>
+											<ListItemText
+												primary={value.name}
+												secondary={value.artist}
+											/>
+											<ListItemSecondaryAction>
 												<Button variant="contained">
 													<ListItemLink href={value.url} target={"_blank"}>
 														<PlayArrowIcon />
 													</ListItemLink>
 												</Button>
-												<ListItemSecondaryAction>
-													<IconButton
-														edge="end"
-														variant="contained"
-														aria-label="delete"
-														onClick={(e) => trackLove(e, value.name, value.artist)}
-													>
-														<FavoriteBorderIcon />
-													</IconButton>
-												</ListItemSecondaryAction>
-											</ListItem>
-										}
-									</List>
-								</div>
-							</Paper>
-						);
-					})}
+											</ListItemSecondaryAction>
+										</ListItem>
+									}
+								</List>
+							</div>
+						</Paper>
+					);
+				})}
 				</Container>
+				)
 			) : (
 				""
 			)}

@@ -6,6 +6,8 @@ import Drawer from "../pages/drawer/index";
 import Result from "../pages/result";
 import Token from "../pages/token";
 import User from "../pages/user";
+import Scrobble from "../pages/scroble";
+import TopCharts from "../pages/topCharts"
 import React from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
@@ -20,6 +22,9 @@ export default function App() {
 					<Route exact path="/">
 						<Search />
 					</Route>
+					<Route path="/top">
+						<TopCharts />
+					</Route>
 					<Route path="/saved">
 						<Saved />
 					</Route>
@@ -31,6 +36,9 @@ export default function App() {
 					</Route>
 					<Route path="/token">
 						<Token />
+					</Route>
+					<Route path="/scrobble">
+						<Scrobble />
 					</Route>
 					<Route path="/user">
 						<User />
