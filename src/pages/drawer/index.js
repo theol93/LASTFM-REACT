@@ -7,8 +7,8 @@ import { Link } from "react-router-dom";
 import LockOpenIcon from "@material-ui/icons/LockOpen";
 import SearchIcon from "@material-ui/icons/Search";
 import FavoriteBorderIcon from "@material-ui/icons/FavoriteBorder";
-import AddIcon from '@material-ui/icons/Add';
-import MusicNoteIcon from '@material-ui/icons/MusicNote';
+import AddIcon from "@material-ui/icons/Add";
+import MusicNoteIcon from "@material-ui/icons/MusicNote";
 
 const useStyles = makeStyles({
 	root: {
@@ -62,13 +62,13 @@ export default function CenteredTabs() {
 							{
 								label: "СКРОБЛ",
 								to: "/scrobble",
-								icon: <AddIcon />
+								icon: <AddIcon />,
 							},
 							{
 								label: depsPages,
 								to: "/user",
 								icon: <LockOpenIcon />,
-							}
+							},
 						]);
 				  })()
 				: (function () {

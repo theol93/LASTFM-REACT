@@ -12,7 +12,7 @@ import ListItemSecondaryAction from "@material-ui/core/ListItemSecondaryAction/L
 import IconButton from "@material-ui/core/IconButton";
 import PlayArrowIcon from "@material-ui/icons/PlayArrow";
 import AlbumIcon from "@material-ui/icons/Album";
-import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
+import FavoriteBorderIcon from "@material-ui/icons/FavoriteBorder";
 import md5 from "md5";
 
 export default function Search() {
@@ -68,7 +68,7 @@ export default function Search() {
 		});
 
 		string += "72f025ee47b0cc1d710967db9d1a6202";
-		console.log("str: ",string)
+		console.log("str: ", string);
 		/* Needs lastfm.api.md5.js. */
 		return md5(string);
 	}
@@ -95,7 +95,7 @@ export default function Search() {
 		console.log("URL:", api_sig);
 
 		await fetch(urlFull, { method: "POST" });
-		window.location.href = ("/saved");
+		window.location.href = "/saved";
 	}
 
 	function onButtonClick(type) {
@@ -134,7 +134,6 @@ export default function Search() {
 			setIsFetching(false);
 			if (type === "track") {
 				sortedByListeners = response.results.trackmatches.track;
-
 			} else if (type === "artist") {
 				sortedByListeners = response.results.artistmatches.artist;
 			}
@@ -188,79 +187,82 @@ export default function Search() {
 				</Button>
 			</form>
 
-			{ IsFetching !== true ? (
-				(type === "track") ?
-					(<Container align="center" className={classes.grow}>
-				{data.map((value, index) => {
-					return (
-						<Paper key={index}>
-							<div className={classes.demo}>
-								<List>
-									{
-										<ListItem>
-											<ListItemAvatar>
-												<AlbumIcon />
-											</ListItemAvatar>
-											<ListItemText
-												primary={value.name}
-												secondary={value.artist}
-											/>
-											<Button variant="contained">
-												<ListItemLink href={value.url} target={"_blank"}>
-													<PlayArrowIcon />
-												</ListItemLink>
-											</Button>
-											<ListItemSecondaryAction>
-												{localStorage.getItem("name") !== null ?
-												<IconButton
-													edge="end"
-													variant="contained"
-													aria-label="delete"
-													onClick={(e) => trackLove(e, value.name, value.artist)}
-												>
-													<FavoriteBorderIcon />
-												</IconButton>
-													 : ""}
-											</ListItemSecondaryAction>
-										</ListItem>
-									}
-								</List>
-							</div>
-						</Paper>
-					);
-				})}
-				</Container>
+			{IsFetching !== true ? (
+				type === "track" ? (
+					<Container align="center" className={classes.grow}>
+						{data.map((value, index) => {
+							return (
+								<Paper key={index}>
+									<div className={classes.demo}>
+										<List>
+											{
+												<ListItem>
+													<ListItemAvatar>
+														<AlbumIcon />
+													</ListItemAvatar>
+													<ListItemText
+														primary={value.name}
+														secondary={value.artist}
+													/>
+													<Button variant="contained">
+														<ListItemLink href={value.url} target={"_blank"}>
+															<PlayArrowIcon />
+														</ListItemLink>
+													</Button>
+
+													{localStorage.getItem("name") !== null ? (
+														<ListItemSecondaryAction>
+															<IconButton
+																edge="end"
+																variant="contained"
+																aria-label="delete"
+																onClick={(e) =>
+																	trackLove(e, value.name, value.artist)
+																}
+															>
+																<FavoriteBorderIcon />
+															</IconButton>
+														</ListItemSecondaryAction>
+													) : null}
+												</ListItem>
+											}
+										</List>
+									</div>
+								</Paper>
+							);
+						})}
+					</Container>
 				) : (
 					<Container align="center" className={classes.grow}>
-				{data.map((value, index) => {
-					return (
-						<Paper key={index}>
-							<div className={classes.demo}>
-								<List>
-									{
-										<ListItem>
-											<ListItemAvatar>
-												<AlbumIcon />
-											</ListItemAvatar>
-											<ListItemText
-												primary={value.name}
-												secondary={value.artist}
-											/>
-											<ListItemSecondaryAction>
-												<Button variant="contained">
-													<ListItemLink href={value.url} target={"_blank"}>
-														<PlayArrowIcon />
-													</ListItemLink>
-												</Button>
-											</ListItemSecondaryAction>
-										</ListItem>
-									}
-								</List>
-							</div>
-						</Paper>
-					);
-				})}
-				</Container>
+						{data.map((value, index) => {
+							return (
+								<Paper key={index}>
+									<div className={classes.demo}>
+										<List>
+											{
+												<ListItem>
+													<ListItemAvatar>
+														<AlbumIcon />
+													</ListItemAvatar>
+													<ListItemText
+														primary={value.name}
+														secondary={"Artist"}
+													/>
+													<ListItemSecondaryAction>
+														<Button variant="contained">
+															<ListItemLink href={value.url} target={"_blank"}>
+																<PlayArrowIcon />
+															</ListItemLink>
+														</Button>
+													</ListItemSecondaryAction>
+												</ListItem>
+											}
+										</List>
+									</div>
+								</Paper>
+							);
+						})}
+					</Container>
 				)
 			) : (
 				""

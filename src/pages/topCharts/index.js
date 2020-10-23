@@ -15,7 +15,7 @@ const useStyles = makeStyles((theme) => ({
 	root: {
 		flexGrow: 1,
 		maxWidth: "65vw",
-        paddingTop: "10px"
+		paddingTop: "10px",
 	},
 	demo: {
 		position: "center",
@@ -61,7 +61,7 @@ export default function TopCharts() {
 				setTrack(responseTrack.tracks.track);
 				setArtist(responseArtist.artists.artist);
 			}
-            setIsFetching(true);
+			setIsFetching(true);
 			return () => (cleanupFunction = true);
 		})();
 	}, []);
@@ -78,9 +78,9 @@ export default function TopCharts() {
 		<Container align="center" className={classes.grow}>
 			{IsFetching === true ? (
 				<Grid className={classes.root}>
-					<Grid container spacing={3} justify="center">
+					<Grid container spacing={3}>
 						<Grid item xs={6} className={classes.root}>
-                            <h4>ТОП 10 ПЕСЕН</h4>
+							<h4>ТОП 10 ПЕСЕН</h4>
 							{track.map((track, i) => {
 								return (
 									<Paper key={i}>
@@ -89,18 +89,21 @@ export default function TopCharts() {
 												{
 													<ListItem>
 														<ListItemAvatar>
-                                                            <h2>{++i}</h2>
+															<h2>{++i}</h2>
 														</ListItemAvatar>
 														<ListItemText
 															primary={track.name}
 															secondary={track.artist.name}
 														/>
 														<ListItemSecondaryAction>
-                                                            <Button variant="contained">
-                                                                <ListItemLink href={track.url} target={"_blank"}>
-                                                                    <PlayArrowIcon />
-                                                                </ListItemLink>
-                                                            </Button>
+															<Button variant="contained">
+																<ListItemLink
+																	href={track.url}
+																	target={"_blank"}
+																>
+																	<PlayArrowIcon />
+																</ListItemLink>
+															</Button>
 														</ListItemSecondaryAction>
 													</ListItem>
 												}
@@ -111,7 +114,7 @@ export default function TopCharts() {
 							})}
 						</Grid>
 						<Grid item xs={6} className={classes.root}>
-                            <h4>ТОП 10 ИСПОЛНИТЕЛЕЙ</h4>
+							<h4>ТОП 10 ИСПОЛНИТЕЛЕЙ</h4>
 							{artist.map((artist, i) => {
 								return (
 									<Paper key={i}>
@@ -120,17 +123,18 @@ export default function TopCharts() {
 												{
 													<ListItem>
 														<ListItemAvatar>
-                                                            <h2>{++i}</h2>
+															<h2>{++i}</h2>
 														</ListItemAvatar>
-														<ListItemText
-															primary={artist.name}
-														/>
+														<ListItemText primary={artist.name} />
 														<ListItemSecondaryAction>
-                                                            <Button variant="contained">
-                                                                <ListItemLink href={artist.url} target={"_blank"}>
-                                                                    <PlayArrowIcon />
-                                                                </ListItemLink>
-                                                            </Button>
+															<Button variant="contained">
+																<ListItemLink
+																	href={artist.url}
+																	target={"_blank"}
+																>
+																	<PlayArrowIcon />
+																</ListItemLink>
+															</Button>
 														</ListItemSecondaryAction>
 													</ListItem>
 												}
