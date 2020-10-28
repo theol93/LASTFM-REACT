@@ -24,12 +24,10 @@ const useStyles = makeStyles((theme) => ({
 		width: "100%",
 		marginTop: theme.spacing(1),
 	},
-<<<<<<< HEAD
+
 	table: {
 		minWidth: 650,
 	},
-=======
->>>>>>> 503aed9b68a9b8ce0f13828f4f48a53b73983260
 }));
 
 export default function User() {
@@ -90,7 +88,11 @@ export default function User() {
 												<TableCell align="center">{user.realname}</TableCell>
 												<TableCell align="center">{user.gender}</TableCell>
 												<TableCell align="center">{user.country}</TableCell>
-												<TableCell align="center"><a href={user.url} target={"blank"}>Link</a></TableCell>
+												<TableCell align="center">
+													<a href={user.url} target={"blank"}>
+														Link
+													</a>
+												</TableCell>
 												<TableCell align="center">{user.subscribers}</TableCell>
 												<TableCell align="center">{user.playcount}</TableCell>
 												<TableCell align="center">{user.playlists}</TableCell>

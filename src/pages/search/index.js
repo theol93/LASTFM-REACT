@@ -20,7 +20,7 @@ export default function Search() {
 		grow: {
 			flexGrow: 1,
 			width: "65vw",
-			paddingTop: "15px"
+			paddingTop: "15px",
 		},
 		demo: {
 			position: "center",
@@ -236,37 +236,6 @@ export default function Search() {
 					</Container>
 				) : (
 					<Container align="center" className={classes.grow}>
-<<<<<<< HEAD
-				{data.map((value, index) => {
-					return (
-						<Paper key={index}>
-							<div className={classes.demo}>
-								<List>
-									{
-										<ListItem>
-											<ListItemAvatar>
-												<AlbumIcon />
-											</ListItemAvatar>
-											<ListItemText
-												primary={value.name}
-												secondary={"Artist"}
-											/>
-											<ListItemSecondaryAction>
-												<Button variant="contained">
-													<ListItemLink href={value.url} target={"_blank"}>
-														<PlayArrowIcon />
-													</ListItemLink>
-												</Button>
-											</ListItemSecondaryAction>
-										</ListItem>
-									}
-								</List>
-							</div>
-						</Paper>
-					);
-				})}
-				</Container>
-=======
 						{data.map((value, index) => {
 							return (
 								<Paper key={index}>
@@ -296,7 +265,6 @@ export default function Search() {
 							);
 						})}
 					</Container>
->>>>>>> 503aed9b68a9b8ce0f13828f4f48a53b73983260
 				)
 			) : (
 				""
