@@ -20,10 +20,12 @@ export default function Search() {
 		grow: {
 			flexGrow: 1,
 			width: "65vw",
+			paddingTop: "15px"
 		},
 		demo: {
 			position: "center",
 			backgroundColor: "rgb(245, 245, 245)",
+			border: "1px solid #DDD",
 		},
 		root: {
 			"& > *": {
@@ -244,7 +246,7 @@ export default function Search() {
 											</ListItemAvatar>
 											<ListItemText
 												primary={value.name}
-												secondary={value.artist}
+												secondary={"Artist"}
 											/>
 											<ListItemSecondaryAction>
 												<Button variant="contained">

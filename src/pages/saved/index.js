@@ -21,10 +21,12 @@ const useStyles = makeStyles((theme) => ({
 	root: {
 		flexGrow: 1,
 		maxWidth: "65vw",
+		paddingTop: "15px"
 	},
 	demo: {
 		position: "center",
 		backgroundColor: "rgb(245, 245, 245)",
+		border: "1px solid #DDD"
 	},
 	title: {
 		margin: theme.spacing(4, 0, 2),
@@ -202,22 +204,15 @@ export default function Saved() {
 																<LibraryMusicIcon />
 															</ListItemAvatar>
 															<ListItemText primary={artist.name} />
-															<Button variant="contained">
-																<ListItemLink
-																	href={artist.url}
-																	target={"_blank"}
-																>
-																	<PlayArrowIcon />
-																</ListItemLink>
-															</Button>
 															<ListItemSecondaryAction>
-																<IconButton
-																	edge="end"
-																	variant="contained"
-																	aria-label="delete"
-																>
-																	<DeleteIcon />
-																</IconButton>
+																<Button variant="contained">
+																	<ListItemLink
+																		href={artist.url}
+																		target={"_blank"}
+																	>
+																		<PlayArrowIcon />
+																	</ListItemLink>
+																</Button>
 															</ListItemSecondaryAction>
 														</ListItem>
 													}

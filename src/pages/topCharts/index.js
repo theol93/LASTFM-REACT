@@ -15,11 +15,12 @@ const useStyles = makeStyles((theme) => ({
 	root: {
 		flexGrow: 1,
 		maxWidth: "65vw",
-        paddingTop: "10px"
+        paddingTop: "15px"
 	},
 	demo: {
 		position: "center",
 		backgroundColor: "rgb(245, 245, 245)",
+		border: "1px solid #DDD"
 	},
 	title: {
 		margin: theme.spacing(4, 0, 2),
