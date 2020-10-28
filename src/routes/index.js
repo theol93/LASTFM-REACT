@@ -7,7 +7,7 @@ import Result from "../pages/result";
 import Token from "../pages/token";
 import User from "../pages/user";
 import Scrobble from "../pages/scroble";
-import TopCharts from "../pages/topCharts"
+import TopCharts from "../pages/topCharts";
 import React from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 

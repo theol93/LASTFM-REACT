@@ -24,9 +24,12 @@ const useStyles = makeStyles((theme) => ({
 		width: "100%",
 		marginTop: theme.spacing(1),
 	},
+<<<<<<< HEAD
 	table: {
 		minWidth: 650,
 	},
+=======
+>>>>>>> 503aed9b68a9b8ce0f13828f4f48a53b73983260
 }));
 
 export default function User() {

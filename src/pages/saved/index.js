@@ -64,7 +64,7 @@ export default function Saved() {
 		});
 
 		string += "72f025ee47b0cc1d710967db9d1a6202";
-		console.log("str: ",string)
+		console.log("str: ", string);
 		/* Needs lastfm.api.md5.js. */
 		return md5(string);
 	}
