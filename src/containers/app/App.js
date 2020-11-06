@@ -1,12 +1,18 @@
 import React from "react";
 import Router from "../../routes";
 import { connect } from "react-redux";
-import { setArtists, setTracks } from "../../actions/topCharts";
+import { artistsRequest, tracksRequest } from "../../actions/topCharts";
 
-function App() {
+function App(props) {
+	const {setArtistsAction, setTracksAction, artist, song} = props
 		return (
 			<div>
-				<Router />
+				<Router
+					setArtistsAction={setArtistsAction}
+					setTracksAction={setTracksAction}
+					artist={artist}
+					song={song}
+				/>
 			</div>
 		);
 }
@@ -20,8 +26,8 @@ const mapStateToProps = (store) => {
 
 const mapDispatchToProps = (dispatch) => {
 	return {
-		setArtists: (artists) => dispatch(setArtists(artists)), // [1]
-		setTracks: (tracks) => dispatch(setTracks(tracks))
+		setArtistsAction: (artists) => dispatch(artistsRequest(artists)), // [1]
+		setTracksAction: (tracks) => dispatch(tracksRequest(tracks))
 	}
 }
 

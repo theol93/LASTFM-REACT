@@ -34,8 +34,9 @@ const useStyles = makeStyles((theme) => ({
 	},
 }));
 
-export default function TopCharts() {
+export default function TopCharts(props) {
 	const classes = useStyles();
+	const {setArtistsAction, setTracksAction} = props
 
 	const [track, setTrack] = useState([]);
 	const [artist, setArtist] = useState([]);
@@ -68,8 +69,10 @@ export default function TopCharts() {
 	}, []);
 
 	useEffect(() => {
+		setArtistsAction()
+		setTracksAction()
 		getTops();
-	}, [getTops]);
+	}, [getTops, setArtistsAction, setTracksAction]);
 
 	function ListItemLink(props) {
 		return <ListItem button component="a" {...props} />;

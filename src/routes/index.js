@@ -11,7 +11,9 @@ import TopCharts from "../components/topCharts";
 import React from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
-export default function App() {
+export default function App(props) {
+	const {setArtistsAction, setTracksAction, artist, song} = props
+
 	return (
 		<Router>
 			<nav>
@@ -23,7 +25,12 @@ export default function App() {
 						<Search />
 					</Route>
 					<Route path="/top">
-						<TopCharts />
+						<TopCharts
+							setArtistsAction={setArtistsAction}
+							setTracksAction={setTracksAction}
+							artist={artist}
+							song={song}
+						/>
 					</Route>
 					<Route path="/saved">
 						<Saved />
