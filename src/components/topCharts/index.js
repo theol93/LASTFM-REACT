@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
 import Paper from "@material-ui/core/Paper";
@@ -36,43 +36,20 @@ const useStyles = makeStyles((theme) => ({
 
 export default function TopCharts(props) {
 	const classes = useStyles();
-	const {setArtistsAction, setTracksAction} = props
 
-	const [track, setTrack] = useState([]);
-	const [artist, setArtist] = useState([]);
-	const [IsFetching, setIsFetching] = useState(false);
-
-	const getTops = useCallback(() => {
-		(async function () {
-			let cleanupFunction = false;
-
-			let urlSong =
-				"http://ws.audioscrobbler.com/2.0/?method=chart.getTopTracks&limit=10" +
-				"&api_key=e9fcdc63353cd735a0d4ae4cbf86ab6a&format=json";
-			let urlArtist =
-				"http://ws.audioscrobbler.com/2.0/?method=chart.getTopArtists&limit=10" +
-				"&api_key=e9fcdc63353cd735a0d4ae4cbf86ab6a&format=json";
-
-			let responseTrack = await fetch(urlSong);
-			responseTrack = await responseTrack.json();
-
-			let responseArtist = await fetch(urlArtist);
-			responseArtist = await responseArtist.json();
-
-			if (!cleanupFunction) {
-				setTrack(responseTrack.tracks.track);
-				setArtist(responseArtist.artists.artist);
-			}
-			setIsFetching(true);
-			return () => (cleanupFunction = true);
-		})();
-	}, []);
+	const {
+		setArtistsAction,
+		setTracksAction,
+		tracks,
+		artists,
+		tracksIsFetching,
+		artistsIsFetching,
+	} = props;
 
 	useEffect(() => {
-		setArtistsAction()
-		setTracksAction()
-		getTops();
-	}, [getTops, setArtistsAction, setTracksAction]);
+		setArtistsAction();
+		setTracksAction();
+	}, [setArtistsAction, setTracksAction]);
 
 	function ListItemLink(props) {
 		return <ListItem button component="a" {...props} />;
@@ -80,12 +57,12 @@ export default function TopCharts(props) {
 
 	return (
 		<Container align="center" className={classes.grow}>
-			{IsFetching === true ? (
-				<Grid className={classes.root}>
-					<Grid container spacing={3}>
+			<Grid className={classes.root}>
+				<Grid container spacing={3}>
+					{tracksIsFetching === false ? (
 						<Grid item xs={6} className={classes.root}>
 							<h4>ТОП 10 ПЕСЕН</h4>
-							{track.map((track, i) => {
+							{tracks.map((track, i) => {
 								return (
 									<Paper key={i}>
 										<div className={classes.demo}>
@@ -117,9 +94,14 @@ export default function TopCharts(props) {
 								);
 							})}
 						</Grid>
+					) : (
+						""
+					)}
+
+					{artistsIsFetching === false ? (
 						<Grid item xs={6} className={classes.root}>
 							<h4>ТОП 10 ИСПОЛНИТЕЛЕЙ</h4>
-							{artist.map((artist, i) => {
+							{artists.map((artist, i) => {
 								return (
 									<Paper key={i}>
 										<div className={classes.demo}>
@@ -148,11 +130,11 @@ export default function TopCharts(props) {
 								);
 							})}
 						</Grid>
-					</Grid>
+					) : (
+						""
+					)}
 				</Grid>
-			) : (
-				""
-			)}
+			</Grid>
 		</Container>
 	);
 }

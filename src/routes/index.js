@@ -12,7 +12,14 @@ import React from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 export default function App(props) {
-	const {setArtistsAction, setTracksAction, artist, song} = props
+	const {
+		setArtistsAction,
+		setTracksAction,
+		artist,
+		track,
+		tracksIsFetching,
+		artistsIsFetching,
+	} = props;
 
 	return (
 		<Router>
@@ -29,7 +36,9 @@ export default function App(props) {
 							setArtistsAction={setArtistsAction}
 							setTracksAction={setTracksAction}
 							artist={artist}
-							song={song}
+							track={track}
+							tracksIsFetching={tracksIsFetching}
+							artistsIsFetching={artistsIsFetching}
 						/>
 					</Route>
 					<Route path="/saved">
