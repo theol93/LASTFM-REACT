@@ -49,7 +49,8 @@ export default function TopCharts(props) {
 	useEffect(() => {
 		setArtistsAction();
 		setTracksAction();
-	}, [setArtistsAction, setTracksAction]);
+		console.log(tracks, artists);
+	}, [setArtistsAction, setTracksAction, tracks, artists]);
 
 	function ListItemLink(props) {
 		return <ListItem button component="a" {...props} />;

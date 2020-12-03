@@ -10,8 +10,6 @@ import {
 const initialState = {
 	artists: [],
 	tracks: [],
-	artistsIsFetching: null,
-	tracksIsFetching: null,
 };
 
 export function topChartsReducer(state = initialState, action) {
