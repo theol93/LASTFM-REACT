@@ -37,20 +37,13 @@ const useStyles = makeStyles((theme) => ({
 export default function TopCharts(props) {
 	const classes = useStyles();
 
-	const {
-		setArtistsAction,
-		setTracksAction,
-		tracks,
-		artists,
-		tracksIsFetching,
-		artistsIsFetching,
-	} = props;
+	let setArtistsAction = props.setArtistsAction;
+	let setTracksAction = props.setTracksAction;
 
 	useEffect(() => {
-		setArtistsAction();
 		setTracksAction();
-		console.log(tracks, artists);
-	}, [setArtistsAction, setTracksAction, tracks, artists]);
+		setArtistsAction();
+	}, [setArtistsAction, setTracksAction]);
 
 	function ListItemLink(props) {
 		return <ListItem button component="a" {...props} />;
@@ -60,10 +53,10 @@ export default function TopCharts(props) {
 		<Container align="center" className={classes.grow}>
 			<Grid className={classes.root}>
 				<Grid container spacing={3}>
-					{tracksIsFetching === false ? (
+					{props.tracksIsFetching === false ? (
 						<Grid item xs={6} className={classes.root}>
 							<h4>ТОП 10 ПЕСЕН</h4>
-							{tracks.map((track, i) => {
+							{props.track.map((track, i) => {
 								return (
 									<Paper key={i}>
 										<div className={classes.demo}>
@@ -99,10 +92,10 @@ export default function TopCharts(props) {
 						""
 					)}
 
-					{artistsIsFetching === false ? (
+					{props.artistsIsFetching === false ? (
 						<Grid item xs={6} className={classes.root}>
 							<h4>ТОП 10 ИСПОЛНИТЕЛЕЙ</h4>
-							{artists.map((artist, i) => {
+							{props.artist.map((artist, i) => {
 								return (
 									<Paper key={i}>
 										<div className={classes.demo}>

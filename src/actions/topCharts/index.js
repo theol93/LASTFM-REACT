@@ -20,7 +20,7 @@ export function artistsRequest() {
 
 const artistsRequestSucces = (artists) => ({
 	type: GET_TOP_ARTISTS_SUCCESS,
-	payload: { ...artists },
+	payload: [...artists],
 });
 
 export function tracksRequest() {
@@ -40,5 +40,5 @@ export function tracksRequest() {
 
 const tracksRequestSucces = (tracks) => ({
 	type: GET_TOP_TRACKS_SUCCESS,
-	payload: { ...tracks },
+	payload: [...tracks],
 });

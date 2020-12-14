@@ -37,8 +37,8 @@ const mapStateToProps = (store) => {
 
 const mapDispatchToProps = (dispatch) => {
 	return {
-		setArtistsAction: (artists) => dispatch(artistsRequest(artists)), // [1]
-		setTracksAction: (tracks) => dispatch(tracksRequest(tracks)),
+		setArtistsAction: () => dispatch(artistsRequest()),
+		setTracksAction: () => dispatch(tracksRequest()),
 	};
 };
 

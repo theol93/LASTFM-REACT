@@ -12,15 +12,6 @@ import React from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 export default function App(props) {
-	const {
-		setArtistsAction,
-		setTracksAction,
-		artist,
-		track,
-		tracksIsFetching,
-		artistsIsFetching,
-	} = props;
-
 	return (
 		<Router>
 			<nav>
@@ -33,12 +24,12 @@ export default function App(props) {
 					</Route>
 					<Route path="/top">
 						<TopCharts
-							setArtistsAction={setArtistsAction}
-							setTracksAction={setTracksAction}
-							artist={artist}
-							track={track}
-							tracksIsFetching={tracksIsFetching}
-							artistsIsFetching={artistsIsFetching}
+							setArtistsAction={props.setArtistsAction}
+							setTracksAction={props.setTracksAction}
+							artist={props.artist}
+							track={props.track}
+							tracksIsFetching={props.tracksIsFetching}
+							artistsIsFetching={props.artistsIsFetching}
 						/>
 					</Route>
 					<Route path="/saved">
