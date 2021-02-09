@@ -6,7 +6,7 @@ export default function Token() {
 	let location = useLocation()
 	let path = location.search.split('=')
 
-	;(async function getSession() {
+	(async function getSession() {
 		localStorage.setItem('token', path[1])
 		let token = localStorage.getItem('token')
 		let md5Key =
