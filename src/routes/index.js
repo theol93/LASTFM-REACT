@@ -2,12 +2,11 @@ import Saved from "../components/saved/index";
 import Search from "../components/search/index";
 import Page404 from "../components/page404/index";
 import Login from "../components/login/index";
-import Drawer from "../components/drawer/index";
-import Result from "../components/result";
-import Token from "../components/token";
-import User from "../components/user";
+import Drawer from "../containers/drawer/index";
+import Token from "../api/token";
+import User from "../containers/user";
 import Scrobble from "../components/scroble";
-import TopCharts from "../components/topCharts";
+import TopCharts from "../containers/topCharts";
 import React from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
@@ -37,9 +36,6 @@ export default function App(props) {
 					</Route>
 					<Route path="/login">
 						<Login />
-					</Route>
-					<Route path="/result">
-						<Result />
 					</Route>
 					<Route path="/token">
 						<Token />
