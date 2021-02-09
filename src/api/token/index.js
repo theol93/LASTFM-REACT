@@ -4,7 +4,8 @@ import md5 from 'md5/md5'
 
 export default function Token() {
 	let location = useLocation()
-	let path = location.search.split('=')
+
+	let path = location.search.split('=');
 
 	(async function getSession() {
 		localStorage.setItem('token', path[1])
