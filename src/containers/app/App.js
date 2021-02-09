@@ -1,7 +1,8 @@
 import React from "react";
 import Router from "../../routes";
 import { connect } from "react-redux";
-import { artistsRequest, tracksRequest } from "../../actions/topCharts";
+import { artistsRequest } from "../../actions/topCharts/topArtists";
+import { tracksRequest } from "../../actions/topCharts/topTracks";
 import getUserInfo from "../../actions/user"
 
 function App(props) {
@@ -35,10 +36,10 @@ function App(props) {
 
 const mapStateToProps = (store) => {
 	return {
-		artist: store.top.artists,
-		track: store.top.tracks,
-		artistsIsFetching: store.top.artistsIsFetching,
-		tracksIsFetching: store.top.tracksIsFetching,
+		artist: store.topArtists.artists,
+		track: store.topTracks.tracks,
+		artistsIsFetching: store.topArtists.artistsIsFetching,
+		tracksIsFetching: store.topTracks.tracksIsFetching,
 		userIsFetching: store.user.userInfoIsFetching,
 		user: store.user.user
 	};

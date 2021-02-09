@@ -1,8 +1,10 @@
 import { combineReducers } from "redux";
-import { topChartsReducer } from "./topCharts";
+import { topArtists } from "./topArtists";
+import { topTracks } from "./topTracks";
 import { getUserInfo } from "./userInfo"
 
 export const rootReducer = combineReducers({
-	top: topChartsReducer,
+	topTracks: topTracks,
+	topArtists: topArtists,
 	user: getUserInfo
 });
