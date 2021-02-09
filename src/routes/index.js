@@ -1,14 +1,14 @@
-import Saved from "../components/saved/index";
-import Search from "../components/search/index";
-import Page404 from "../components/page404/index";
-import Login from "../components/login/index";
-import Drawer from "../containers/drawer/index";
-import Token from "../api/token";
-import User from "../containers/user";
-import Scrobble from "../components/scroble";
-import TopCharts from "../containers/topCharts";
-import React from "react";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import Saved from '../containers/saved/index'
+import Search from '../containers/search/index'
+import Page404 from '../components/page404/index'
+import Login from '../components/login/index'
+import Drawer from '../containers/drawer/index'
+import Token from '../api/token'
+import User from '../containers/user'
+import Scrobble from '../containers/scroble'
+import TopCharts from '../containers/topCharts'
+import React from 'react'
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 
 export default function App(props) {
 	return (
@@ -56,5 +56,5 @@ export default function App(props) {
 				</Switch>
 			</nav>
 		</Router>
-	);
+	)
 }

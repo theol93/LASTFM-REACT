@@ -1,8 +1,8 @@
-import React from "react";
-import logo from "./page404.gif";
-import styles from "./index.module.css";
-import Container from "@material-ui/core/Container";
-import Button from "@material-ui/core/Button";
+import React from 'react'
+import logo from './page404.gif'
+import styles from './index.module.css'
+import Container from '@material-ui/core/Container'
+import Button from '@material-ui/core/Button'
 
 export default function () {
 	return (
@@ -10,7 +10,7 @@ export default function () {
 			<div className={styles.head}>Страница не найдена...</div>
 
 			<div className={styles.body}>
-				<img src={logo} height={"400px"} alt={404} />
+				<img src={logo} height={'400px'} alt={404} />
 			</div>
 
 			<Button
@@ -18,10 +18,10 @@ export default function () {
 				fullWidth
 				variant="contained"
 				color="default"
-				href={"/"}
+				href={'/'}
 			>
 				Нажмите, чтобы вернуться на главную.
 			</Button>
 		</Container>
-	);
+	)
 }

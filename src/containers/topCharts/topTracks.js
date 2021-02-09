@@ -1,53 +1,54 @@
-import React, { useEffect } from "react";
-import { makeStyles } from "@material-ui/core/styles";
-import Grid from "@material-ui/core/Grid";
-import Paper from "@material-ui/core/Paper";
-import List from "@material-ui/core/List";
-import ListItem from "@material-ui/core/ListItem";
-import ListItemAvatar from "@material-ui/core/ListItemAvatar";
-import ListItemText from "@material-ui/core/ListItemText";
-import Button from "@material-ui/core/Button";
-import PlayArrowIcon from "@material-ui/icons/PlayArrow";
-import ListItemSecondaryAction from "@material-ui/core/ListItemSecondaryAction";
+import React, { useEffect } from 'react'
+import { makeStyles } from '@material-ui/core/styles'
+import Grid from '@material-ui/core/Grid'
+import Paper from '@material-ui/core/Paper'
+import List from '@material-ui/core/List'
+import ListItem from '@material-ui/core/ListItem'
+import ListItemAvatar from '@material-ui/core/ListItemAvatar'
+import ListItemText from '@material-ui/core/ListItemText'
+import Button from '@material-ui/core/Button'
+import PlayArrowIcon from '@material-ui/icons/PlayArrow'
+import ListItemSecondaryAction from '@material-ui/core/ListItemSecondaryAction'
 
 const useStyles = makeStyles((theme) => ({
 	root: {
 		flexGrow: 1,
-		maxWidth: "65vw",
-		paddingTop: "15px",
+		maxWidth: '65vw',
+		paddingTop: '15px',
 	},
 	demo: {
-		position: "center",
-		backgroundColor: "rgb(245, 245, 245)",
-		border: "1px solid #DDD",
+		position: 'center',
+		backgroundColor: 'rgb(245, 245, 245)',
+		border: '1px solid #DDD',
 	},
 	title: {
 		margin: theme.spacing(4, 0, 2),
 	},
 	top: {
-		marginTop: "20px",
+		marginTop: '20px',
 	},
 	grow: {
-		marginTop: "10px",
+		marginTop: '10px',
 		flexGrow: 1,
 	},
-}));
+}))
 
 export default function TopTracks(props) {
-	const classes = useStyles();
+	const classes = useStyles()
 
-	let setTracksAction = props.setTracksAction;
+	let setTracksAction = props.setTracksAction
 	let tracksIsFetching = props.tracksIsFetching
 	useEffect(() => {
-		setTracksAction();
-	}, [setTracksAction]);
+		setTracksAction()
+	}, [setTracksAction])
 
 	function ListItemLink(props) {
-		return <ListItem button component="a" {...props} />;
+		return <ListItem button component="a" {...props} />
 	}
 
-	return (<>
-		{tracksIsFetching === false ? (
+	return (
+		<>
+			{tracksIsFetching === false ? (
 				<Grid item xs={6} className={classes.root}>
 					<h4>ТОП 10 ПЕСЕН</h4>
 					{props.track.map((track, i) => {
@@ -62,13 +63,15 @@ export default function TopTracks(props) {
 												</ListItemAvatar>
 												<ListItemText
 													primary={track.name}
-													secondary={track.artist.name}
+													secondary={
+														track.artist.name
+													}
 												/>
 												<ListItemSecondaryAction>
 													<Button variant="contained">
 														<ListItemLink
 															href={track.url}
-															target={"_blank"}
+															target={'_blank'}
 														>
 															<PlayArrowIcon />
 														</ListItemLink>
@@ -79,12 +82,12 @@ export default function TopTracks(props) {
 									</List>
 								</div>
 							</Paper>
-						);
+						)
 					})}
 				</Grid>
 			) : (
-				""
+				''
 			)}
 		</>
-			);
+	)
 }

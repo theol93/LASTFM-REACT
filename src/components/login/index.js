@@ -1,26 +1,26 @@
-import React from "react";
-import Button from "@material-ui/core/Button";
-import { makeStyles } from "@material-ui/core/styles";
-import Container from "@material-ui/core/Container";
-import Grid from "@material-ui/core/Grid";
+import React from 'react'
+import Button from '@material-ui/core/Button'
+import { makeStyles } from '@material-ui/core/styles'
+import Container from '@material-ui/core/Container'
+import Grid from '@material-ui/core/Grid'
 
 const useStyles = makeStyles((theme) => ({
 	paper: {
 		marginTop: theme.spacing(8),
-		margin: "10px",
+		margin: '10px',
 	},
 	avatar: {
 		margin: theme.spacing(1),
 		backgroundColor: theme.palette.secondary.main,
 	},
 	form: {
-		width: "100%",
+		width: '100%',
 		marginTop: theme.spacing(1),
 	},
-}));
+}))
 
 export default function SignIn() {
-	const classes = useStyles();
+	const classes = useStyles()
 
 	return (
 		<Container component="main" maxWidth="sm" align="center">
@@ -36,7 +36,7 @@ export default function SignIn() {
 									color="primary"
 									className={classes.submit}
 									href={
-										"http://www.last.fm/api/auth/?api_key=e9fcdc63353cd735a0d4ae4cbf86ab6a"
+										'http://www.last.fm/api/auth/?api_key=e9fcdc63353cd735a0d4ae4cbf86ab6a'
 									}
 								>
 									Войти
@@ -49,14 +49,17 @@ export default function SignIn() {
 									variant="contained"
 									color="default"
 									className={classes.submit}
-									href={"https://www.last.fm/ru/join"}
+									href={'https://www.last.fm/ru/join'}
 									target="_blank"
 								>
 									Зарегистрироваться
 								</Button>
 							</Grid>
 						</Grid>
-						<div key={2} style={{ color: "grey", paddingTop: "50px" }}>
+						<div
+							key={2}
+							style={{ color: 'grey', paddingTop: '50px' }}
+						>
 							<h2>Test data for LastFM:</h2>
 							<h3>Login: theol1993</h3>
 							<h3>Password: !1111qqqq</h3>
@@ -65,7 +68,7 @@ export default function SignIn() {
 				</Grid>
 			</div>
 		</Container>
-	);
+	)
 }
 /*
     Login: theol1993

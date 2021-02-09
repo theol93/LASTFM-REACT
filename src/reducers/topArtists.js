@@ -10,10 +10,14 @@ const initialState = {
 export function topArtists(state = initialState, action) {
 	switch (action.type) {
 		case GET_TOP_ARTISTS_REQUEST:
-			return { ...state, artistsIsFetching: true };
+			return { ...state, artistsIsFetching: true }
 		case GET_TOP_ARTISTS_SUCCESS:
-			return { ...state, artists: action.payload, artistsIsFetching: false };
+			return {
+				...state,
+				artists: action.payload,
+				artistsIsFetching: false,
+			}
 		default:
-			return state;
+			return state
 	}
 }

@@ -1,9 +1,9 @@
-import React from "react";
-import Router from "../../routes";
-import { connect } from "react-redux";
-import { artistsRequest } from "../../actions/topCharts/topArtists";
-import { tracksRequest } from "../../actions/topCharts/topTracks";
-import getUserInfo from "../../actions/user"
+import React from 'react'
+import Router from '../../routes'
+import { connect } from 'react-redux'
+import { artistsRequest } from '../../actions/topCharts/topArtists'
+import { tracksRequest } from '../../actions/topCharts/topTracks'
+import getUserInfo from '../../actions/user'
 
 function App(props) {
 	const {
@@ -15,8 +15,8 @@ function App(props) {
 		artistsIsFetching,
 		setUserInfo,
 		user,
-		userIsFetching
-	} = props;
+		userIsFetching,
+	} = props
 	return (
 		<div>
 			<Router
@@ -31,7 +31,7 @@ function App(props) {
 				userIsFetching={userIsFetching}
 			/>
 		</div>
-	);
+	)
 }
 
 const mapStateToProps = (store) => {
@@ -41,16 +41,16 @@ const mapStateToProps = (store) => {
 		artistsIsFetching: store.topArtists.artistsIsFetching,
 		tracksIsFetching: store.topTracks.tracksIsFetching,
 		userIsFetching: store.user.userInfoIsFetching,
-		user: store.user.user
-	};
-};
+		user: store.user.user,
+	}
+}
 
 const mapDispatchToProps = (dispatch) => {
 	return {
 		setUserInfo: () => dispatch(getUserInfo()),
 		setArtistsAction: () => dispatch(artistsRequest()),
 		setTracksAction: () => dispatch(tracksRequest()),
-	};
-};
+	}
+}
 
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+export default connect(mapStateToProps, mapDispatchToProps)(App)
