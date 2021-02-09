@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import Grid from "@material-ui/core/Grid";
 import Button from "@material-ui/core/Button";
 import Container from "@material-ui/core/Container";
@@ -30,38 +30,19 @@ const useStyles = makeStyles((theme) => ({
 	},
 }));
 
-export default function User() {
+export default function User(props) {
 	const classes = useStyles();
-	const [user, setUser] = useState([]);
 
-	const getInfo = useCallback(() => {
-		(async function () {
-			let cleanupFunction = false;
-			let name = localStorage.getItem("name");
-			let url =
-				"http://ws.audioscrobbler.com/2.0/?method=user.getinfo&user=" +
-				name +
-				"&api_key=e9fcdc63353cd735a0d4ae4cbf86ab6a&format=json";
+	let setUserInfo = props.setUserInfo
 
-			let response = await fetch(url);
-			response = await response.json();
-
-			if (!cleanupFunction) {
-				setUser(response.user);
-			}
-			return () => (cleanupFunction = true);
-		})();
-	}, []);
-
-	useEffect(() => {
-		getInfo();
-	}, [getInfo]);
+	useEffect( setUserInfo, [setUserInfo])
 
 	return (
 		<Container component="main" maxWidth="sm" align="center">
 			<div className={classes.paper}>
 				<Grid container className={classes.root} spacing={2}>
-					<Grid item xs={12}>
+					{props.userIsFetching === false ? (
+						<Grid item xs={12}>
 						<Grid container justify="center">
 							<Grid key={0} item className={classes.paper}>
 								<TableContainer component={Paper}>
@@ -80,22 +61,22 @@ export default function User() {
 											</TableRow>
 										</TableHead>
 										<TableBody>
-											<TableRow key={user.name}>
+											<TableRow key={props.user.name}>
 												<TableCell component="th" scope="row" align="center">
-													{user.name}
+													{props.user.name}
 												</TableCell>
-												<TableCell align="center">{user.age}</TableCell>
-												<TableCell align="center">{user.realname}</TableCell>
-												<TableCell align="center">{user.gender}</TableCell>
-												<TableCell align="center">{user.country}</TableCell>
+												<TableCell align="center">{props.user.age}</TableCell>
+												<TableCell align="center">{props.user.realname}</TableCell>
+												<TableCell align="center">{props.user.gender}</TableCell>
+												<TableCell align="center">{props.user.country}</TableCell>
 												<TableCell align="center">
-													<a href={user.url} target={"blank"}>
+													<a href={props.user.url} target={"blank"}>
 														Link
 													</a>
 												</TableCell>
-												<TableCell align="center">{user.subscribers}</TableCell>
-												<TableCell align="center">{user.playcount}</TableCell>
-												<TableCell align="center">{user.playlists}</TableCell>
+												<TableCell align="center">{props.user.subscribers}</TableCell>
+												<TableCell align="center">{props.user.playcount}</TableCell>
+												<TableCell align="center">{props.user.playlists}</TableCell>
 											</TableRow>
 										</TableBody>
 									</Table>
@@ -116,6 +97,11 @@ export default function User() {
 							</Grid>
 						</Grid>
 					</Grid>
+						) : (
+							""
+						)
+					}
+
 				</Grid>
 			</div>
 		</Container>

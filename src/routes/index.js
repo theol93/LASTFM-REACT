@@ -48,7 +48,11 @@ export default function App(props) {
 						<Scrobble />
 					</Route>
 					<Route path="/user">
-						<User />
+						<User
+							setUserInfo={props.setUserInfo}
+							user={props.user}
+							userIsFetching={props.userIsFetching}
+						/>
 					</Route>
 					<Route path="*">
 						<Page404 />

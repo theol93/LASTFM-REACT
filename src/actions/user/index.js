@@ -15,12 +15,12 @@ export default function getUserInfo() {
 			let response = await fetch(url);
 			response = await response.json();
 
-			dispatch(getUserInfoSuccess(response));
+			dispatch(getUserInfoSuccess(response.user));
 		})();
 	};
 }
 
-const getUserInfoSuccess = (info) => ({
+const getUserInfoSuccess = (user) => ({
 	type: GET_USER_INFO_SUCCESS,
-	payload: [...info],
+	payload: { ...user },
 });

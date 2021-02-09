@@ -2,7 +2,7 @@ import React from "react";
 import Router from "../../routes";
 import { connect } from "react-redux";
 import { artistsRequest, tracksRequest } from "../../actions/topCharts";
-import getUserInfo from "../../actions/user";
+import getUserInfo from "../../actions/user"
 
 function App(props) {
 	const {
@@ -13,17 +13,21 @@ function App(props) {
 		tracksIsFetching,
 		artistsIsFetching,
 		setUserInfo,
+		user,
+		userIsFetching
 	} = props;
 	return (
 		<div>
 			<Router
 				setArtistsAction={setArtistsAction}
 				setTracksAction={setTracksAction}
-				setUserInfo={setUserInfo}
 				artist={artist}
 				track={track}
 				tracksIsFetching={tracksIsFetching}
 				artistsIsFetching={artistsIsFetching}
+				setUserInfo={setUserInfo}
+				user={user}
+				userIsFetching={userIsFetching}
 			/>
 		</div>
 	);
@@ -35,6 +39,8 @@ const mapStateToProps = (store) => {
 		track: store.top.tracks,
 		artistsIsFetching: store.top.artistsIsFetching,
 		tracksIsFetching: store.top.tracksIsFetching,
+		userIsFetching: store.user.userInfoIsFetching,
+		user: store.user.user
 	};
 };
 

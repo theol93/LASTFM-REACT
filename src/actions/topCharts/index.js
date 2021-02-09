@@ -33,6 +33,7 @@ export function tracksRequest() {
 					"&api_key=e9fcdc63353cd735a0d4ae4cbf86ab6a&format=json"
 			);
 			responseTracks = await responseTracks.json();
+
 			dispatch(tracksRequestSucces(responseTracks.tracks.track));
 		})();
 	};

@@ -1,8 +1,6 @@
 import {
 	GET_TOP_ARTISTS_REQUEST,
 	GET_TOP_TRACKS_REQUEST,
-} from "../actions/topCharts";
-import {
 	GET_TOP_ARTISTS_SUCCESS,
 	GET_TOP_TRACKS_SUCCESS,
 } from "../actions/topCharts";
