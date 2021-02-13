@@ -12,7 +12,7 @@ import IconButton from '@material-ui/core/IconButton'
 import PlayArrowIcon from '@material-ui/icons/PlayArrow'
 import AlbumIcon from '@material-ui/icons/Album'
 import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder'
-import { trackLove } from '../../api/search/index'
+import { trackLove } from '../../api/trackLove'
 
 const useStyles = makeStyles((theme) => ({
 	grow: {

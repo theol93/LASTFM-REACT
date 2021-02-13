@@ -54,7 +54,7 @@ export default function Search(props) {
 	const inputEl = useRef(null)
 	const [clickType, setClickType] = useState('')
 
-	function renderSearch(){
+	function renderSearch() {
 		switch (clickType) {
 			case 'track':
 				return (
