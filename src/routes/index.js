@@ -19,7 +19,14 @@ export default function App(props) {
 			<nav>
 				<Switch>
 					<Route exact path="/">
-						<Search />
+						<Search
+							artistsSearch={props.artistsSearch}
+							artistsSearchIsFetching={props.artistsSearchIsFetching}
+							setSearchArtists={props.setSearchArtists}
+							tracksSearch={props.tracksSearch}
+							tracksSearchIsFetching={props.tracksSearchIsFetching}
+							setSearchTracks={props.setSearchTracks}
+						/>
 					</Route>
 					<Route path="/top">
 						<TopCharts

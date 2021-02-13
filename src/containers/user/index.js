@@ -113,7 +113,7 @@ export default function User(props) {
 														</a>
 													</TableCell>
 													<TableCell align="center">
-														{props.user.subscribers}
+														{props.user.subscriber}
 													</TableCell>
 													<TableCell align="center">
 														{props.user.playcount}

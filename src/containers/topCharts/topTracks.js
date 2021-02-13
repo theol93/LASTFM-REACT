@@ -38,6 +38,7 @@ export default function TopTracks(props) {
 
 	let setTracksAction = props.setTracksAction
 	let tracksIsFetching = props.tracksIsFetching
+
 	useEffect(() => {
 		setTracksAction()
 	}, [setTracksAction])
