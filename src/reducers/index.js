@@ -4,11 +4,15 @@ import { topTracks } from './topTracks'
 import { getUserInfo } from './userInfo'
 import { searchArtists } from './searchArtists'
 import { searchTracks } from './searchTracks'
+import { tracksSaved } from './savedTracks'
+import { artistsSaved } from './savedArtists'
 
 export const rootReducer = combineReducers({
-	topTracks: topTracks,
 	topArtists: topArtists,
-	user: getUserInfo,
+	topTracks: topTracks,
 	artistsSearch: searchArtists,
 	tracksSearch: searchTracks,
+	artistsSaved: artistsSaved,
+	tracksSaved: tracksSaved,
+	user: getUserInfo,
 })

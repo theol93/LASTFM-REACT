@@ -12,7 +12,7 @@ import IconButton from '@material-ui/core/IconButton'
 import PlayArrowIcon from '@material-ui/icons/PlayArrow'
 import AlbumIcon from '@material-ui/icons/Album'
 import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder'
-import { trackLove } from '../../api/trackLove'
+import { trackLove } from '../../api/track'
 
 const useStyles = makeStyles((theme) => ({
 	grow: {
@@ -49,17 +49,13 @@ const useStyles = makeStyles((theme) => ({
 
 export default function SearchTracks(props) {
 	const classes = useStyles()
-
-	let tracksSearchIsFetching = props.tracksSearchIsFetching
-	let tracksSearch = props.tracksSearch
-	let setSearchTracks = props.setSearchTracks
-	let url = props.url
+	const { tracksSearchIsFetching, tracksSearch, setSearchTracks, url } = props
 
 	function ListItemLink(props) {
 		return <ListItem button component="a" {...props} />
 	}
 
-	useEffect( () => setSearchTracks(url), [setSearchTracks, url])
+	useEffect(() => setSearchTracks(url), [setSearchTracks, url])
 
 	return (
 		<Container component="main" align="center">

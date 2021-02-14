@@ -21,10 +21,14 @@ export default function App(props) {
 					<Route exact path="/">
 						<Search
 							artistsSearch={props.artistsSearch}
-							artistsSearchIsFetching={props.artistsSearchIsFetching}
+							artistsSearchIsFetching={
+								props.artistsSearchIsFetching
+							}
 							setSearchArtists={props.setSearchArtists}
 							tracksSearch={props.tracksSearch}
-							tracksSearchIsFetching={props.tracksSearchIsFetching}
+							tracksSearchIsFetching={
+								props.tracksSearchIsFetching
+							}
 							setSearchTracks={props.setSearchTracks}
 						/>
 					</Route>
@@ -39,7 +43,18 @@ export default function App(props) {
 						/>
 					</Route>
 					<Route path="/saved">
-						<Saved />
+						<Saved
+							tracksSaved={props.tracksSaved}
+							tracksSavedIsFetching={
+								props.tracksSaved.tracksSavedIsFetching
+							}
+							artistsSaved={props.artistsSaved}
+							artistsSavedIsFetching={
+								props.artistsSaved.artistsSavedIsFetching
+							}
+							setTracksSaved={props.setTracksSaved}
+							setArtistsSaved={props.setArtistsSaved}
+						/>
 					</Route>
 					<Route path="/login">
 						<Login />
