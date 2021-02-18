@@ -80,20 +80,24 @@ export default function SearchTracks(props) {
 		)
 		if (tracksSaved.tracksSaved.length > 0) {
 			for (let i = 0; i < tracksSaved.tracksSaved.length; i++) {
-				console.log(value.artist)
-				if (tracksSaved.tracksSaved[i].name === value.name && tracksSaved.tracksSaved[i].artist.name === value.artist) {
-					return div = (<ListItemSecondaryAction key={i}>
-						<IconButton
-							edge="end"
-							variant="contained"
-							aria-label="delete"
-							onClick={() =>
-								trackUnlove(value.name, value.artist)
-							}
-						>
-							<FavoriteSharpIcon />
-						</IconButton>
-					</ListItemSecondaryAction>)
+				if (
+					tracksSaved.tracksSaved[i].name === value.name &&
+					tracksSaved.tracksSaved[i].artist.name === value.artist
+				) {
+					return (div = (
+						<ListItemSecondaryAction key={i}>
+							<IconButton
+								edge="end"
+								variant="contained"
+								aria-label="delete"
+								onClick={() =>
+									trackUnlove(value.name, value.artist)
+								}
+							>
+								<FavoriteSharpIcon />
+							</IconButton>
+						</ListItemSecondaryAction>
+					))
 				} else {
 					div = (
 						<ListItemSecondaryAction key={i}>
@@ -101,7 +105,9 @@ export default function SearchTracks(props) {
 								edge="end"
 								variant="contained"
 								aria-label="delete"
-								onClick={() => trackLove(value.name, value.artist)}
+								onClick={() =>
+									trackLove(value.name, value.artist)
+								}
 							>
 								<FavoriteBorderIcon />
 							</IconButton>
@@ -158,38 +164,3 @@ export default function SearchTracks(props) {
 		</Container>
 	)
 }
-
-/* return tracksSaved.tracksSaved.map((track, index) => {
-					console.log(
-						track.name === value.name &&
-						track.artist.name === value.artist
-					)
-					return track.name === value.name &&
-					track.artist.name === value.artist ? (
-						<ListItemSecondaryAction key={index}>
-							<IconButton
-								edge="end"
-								variant="contained"
-								aria-label="delete"
-								onClick={() =>
-									trackUnlove(value.name, value.artist)
-								}
-							>
-								<FavoriteSharpIcon />
-							</IconButton>
-						</ListItemSecondaryAction>
-					) : (
-						<ListItemSecondaryAction key={index}>
-							<IconButton
-								edge="end"
-								variant="contained"
-								aria-label="delete"
-								onClick={() => trackLove(value.name, value.artist)}
-							>
-								<FavoriteBorderIcon />
-							</IconButton>
-						</ListItemSecondaryAction>
-					)
-				})
-			}
-			*/
