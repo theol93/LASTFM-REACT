@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import Button from '@material-ui/core/Button'
 import { makeStyles } from '@material-ui/core/styles'
 import TextField from '@material-ui/core/TextField'
@@ -49,34 +49,44 @@ export default function Search(props) {
 		tracksSearch,
 		tracksSearchIsFetching,
 		setSearchTracks,
+		setTracksSaved,
+		tracksSavedIsFetching,
+		tracksSaved
 	} = props
 
 	const inputEl = useRef(null)
 	const [clickType, setClickType] = useState('')
+	useEffect( () => { setTracksSaved() }, [setTracksSaved])
 
 	function renderSearch() {
-		switch (clickType) {
-			case 'track':
-				return (
-					<SearchTracks
-						tracksSearch={tracksSearch}
-						tracksSearchIsFetching={tracksSearchIsFetching}
-						setSearchTracks={setSearchTracks}
-						url={getUrl('track', inputEl.current.value)}
-					/>
-				)
-			case 'artist':
-				return (
-					<SearchArtists
-						artistsSearch={artistsSearch}
-						artistsSearchIsFetching={artistsSearchIsFetching}
-						setSearchArtists={setSearchArtists}
-						url={getUrl('artist', inputEl.current.value)}
-					/>
-				)
-			default:
-				return ''
-		}
+		if (tracksSavedIsFetching === false){
+			switch (clickType) {
+				case 'track':
+					return (
+						<SearchTracks
+							tracksSearch={tracksSearch}
+							tracksSearchIsFetching={tracksSearchIsFetching}
+							setSearchTracks={setSearchTracks}
+							url={getUrl('track', inputEl.current.value)}
+							tracksSaved={tracksSaved}
+							tracksSavedIsFetching={tracksSavedIsFetching}
+						/>
+					)
+				case 'artist':
+					return (
+						<SearchArtists
+							artistsSearch={artistsSearch}
+							artistsSearchIsFetching={artistsSearchIsFetching}
+							setSearchArtists={setSearchArtists}
+							url={getUrl('artist', inputEl.current.value)}
+						/>
+					)
+				default:
+					return ''
+			}
+
+		} else return ''
+
 	}
 
 	return (

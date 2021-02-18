@@ -41,7 +41,8 @@ function getApiSignature(params) {
 	return md5(string)
 }
 
-export async function trackLove(e, track, artist) {
+export async function trackLove(track, artist) {
+	console.log("love")
 	let params = {}
 	params.method = 'track.love'
 
@@ -51,7 +52,8 @@ export async function trackLove(e, track, artist) {
 	window.location.href = '/saved'
 }
 
-export async function trackUnlove(e, track, artist) {
+export async function trackUnlove( track, artist) {
+	console.log("unlove")
 	let params = {}
 	params.method = 'track.unlove'
 

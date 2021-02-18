@@ -60,7 +60,7 @@ export default function SavedTracks(props) {
 							alignItems="center"
 						>
 							<Grid item xs={12}>
-								{tracksSaved.tracksSaved.map((artist, i) => {
+								{tracksSaved.tracksSaved.map((track, i) => {
 									return (
 										<Paper key={i}>
 											<div className={classes.demo}>
@@ -72,18 +72,17 @@ export default function SavedTracks(props) {
 															</ListItemAvatar>
 															<ListItemText
 																primary={
-																	artist.name
+																	track.name
 																}
 																secondary={
-																	artist
-																		.artist
+																	track.artist
 																		.name
 																}
 															/>
 															<Button variant="contained">
 																<ListItemLink
 																	href={
-																		artist.url
+																		track.url
 																	}
 																	target={
 																		'_blank'
@@ -97,13 +96,10 @@ export default function SavedTracks(props) {
 																	edge="end"
 																	variant="contained"
 																	aria-label="delete"
-																	onClick={(
-																		e
-																	) =>
+																	onClick={() =>
 																		trackUnlove(
-																			e,
-																			artist.name,
-																			artist
+																			track.name,
+																			track
 																				.artist
 																				.name
 																		)

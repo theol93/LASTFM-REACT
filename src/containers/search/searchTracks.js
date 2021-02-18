@@ -12,7 +12,9 @@ import IconButton from '@material-ui/core/IconButton'
 import PlayArrowIcon from '@material-ui/icons/PlayArrow'
 import AlbumIcon from '@material-ui/icons/Album'
 import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder'
+import { trackUnlove } from '../../api/track'
 import { trackLove } from '../../api/track'
+import FavoriteSharpIcon from '@material-ui/icons/FavoriteSharp'
 
 const useStyles = makeStyles((theme) => ({
 	grow: {
@@ -49,13 +51,71 @@ const useStyles = makeStyles((theme) => ({
 
 export default function SearchTracks(props) {
 	const classes = useStyles()
-	const { tracksSearchIsFetching, tracksSearch, setSearchTracks, url } = props
+	const {
+		tracksSearchIsFetching,
+		tracksSearch,
+		setSearchTracks,
+		url,
+		tracksSaved,
+	} = props
 
 	function ListItemLink(props) {
 		return <ListItem button component="a" {...props} />
 	}
 
 	useEffect(() => setSearchTracks(url), [setSearchTracks, url])
+
+	function asTrackSaved(value) {
+		let div = (
+			<ListItemSecondaryAction>
+				<IconButton
+					edge="end"
+					variant="contained"
+					aria-label="delete"
+					onClick={() => trackLove(value.name, value.artist)}
+				>
+					<FavoriteBorderIcon />
+				</IconButton>
+			</ListItemSecondaryAction>
+		)
+		if (tracksSaved.tracksSaved.length > 0) {
+			for (let i = 0; i < tracksSaved.tracksSaved.length; i++) {
+				console.log(value.artist)
+				if (tracksSaved.tracksSaved[i].name === value.name && tracksSaved.tracksSaved[i].artist.name === value.artist) {
+					return div = (<ListItemSecondaryAction key={i}>
+						<IconButton
+							edge="end"
+							variant="contained"
+							aria-label="delete"
+							onClick={() =>
+								trackUnlove(value.name, value.artist)
+							}
+						>
+							<FavoriteSharpIcon />
+						</IconButton>
+					</ListItemSecondaryAction>)
+				} else {
+					div = (
+						<ListItemSecondaryAction key={i}>
+							<IconButton
+								edge="end"
+								variant="contained"
+								aria-label="delete"
+								onClick={() => trackLove(value.name, value.artist)}
+							>
+								<FavoriteBorderIcon />
+							</IconButton>
+						</ListItemSecondaryAction>
+					)
+				}
+			}
+		}
+		return div
+	}
+
+	function asLogin(value) {
+		return localStorage.getItem('name') !== null ? asTrackSaved(value) : ''
+	}
 
 	return (
 		<Container component="main" align="center">
@@ -83,27 +143,7 @@ export default function SearchTracks(props) {
 														<PlayArrowIcon />
 													</ListItemLink>
 												</Button>
-
-												{localStorage.getItem(
-													'name'
-												) !== null ? (
-													<ListItemSecondaryAction>
-														<IconButton
-															edge="end"
-															variant="contained"
-															aria-label="delete"
-															onClick={(e) =>
-																trackLove(
-																	e,
-																	value.name,
-																	value.artist
-																)
-															}
-														>
-															<FavoriteBorderIcon />
-														</IconButton>
-													</ListItemSecondaryAction>
-												) : null}
+												{asLogin(value)}
 											</ListItem>
 										}
 									</List>
@@ -118,3 +158,38 @@ export default function SearchTracks(props) {
 		</Container>
 	)
 }
+
+/* return tracksSaved.tracksSaved.map((track, index) => {
+					console.log(
+						track.name === value.name &&
+						track.artist.name === value.artist
+					)
+					return track.name === value.name &&
+					track.artist.name === value.artist ? (
+						<ListItemSecondaryAction key={index}>
+							<IconButton
+								edge="end"
+								variant="contained"
+								aria-label="delete"
+								onClick={() =>
+									trackUnlove(value.name, value.artist)
+								}
+							>
+								<FavoriteSharpIcon />
+							</IconButton>
+						</ListItemSecondaryAction>
+					) : (
+						<ListItemSecondaryAction key={index}>
+							<IconButton
+								edge="end"
+								variant="contained"
+								aria-label="delete"
+								onClick={() => trackLove(value.name, value.artist)}
+							>
+								<FavoriteBorderIcon />
+							</IconButton>
+						</ListItemSecondaryAction>
+					)
+				})
+			}
+			*/

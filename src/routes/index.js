@@ -30,6 +30,11 @@ export default function App(props) {
 								props.tracksSearchIsFetching
 							}
 							setSearchTracks={props.setSearchTracks}
+							setTracksSaved={props.setTracksSaved}
+							tracksSavedIsFetching={
+								props.tracksSaved.tracksSavedIsFetching
+							}
+							tracksSaved={props.tracksSaved}
 						/>
 					</Route>
 					<Route path="/top">
