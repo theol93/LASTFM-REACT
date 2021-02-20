@@ -7,22 +7,13 @@ export function getUrl(type, text) {
 
 		switch (type) {
 			case 'artist':
-				typeCode = 'artist.search&artist=';
-				return (start + typeCode + text + apiKey)
+				typeCode = 'artist.search&artist='
+				return start + typeCode + text + apiKey
 			case 'track':
-				typeCode = 'track.search&track=';
-				return (start + typeCode + text + apiKey)
+				typeCode = 'track.search&track='
+				return start + typeCode + text + apiKey
 			default:
-				return null;
+				return null
 		}
 	}
 }
-
-
-
-
-
-/* function isLoved(props){
-		console.log(props)
-		//if() return (<FavoriteBorderIcon />) else return (<FavoriteIcon />)
-	}*/
