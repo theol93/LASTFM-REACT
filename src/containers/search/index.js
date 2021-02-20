@@ -60,6 +60,13 @@ export default function Search(props) {
 		setTracksSaved()
 	}, [setTracksSaved])
 
+	function stopAction(event) {
+		if (event.charCode === 13) {
+			event.preventDefault()
+			alert('Выберите что вы хотите искать, нажав кнопку сбоку!')
+		}
+	}
+
 	function renderSearch() {
 		if (tracksSavedIsFetching === false) {
 			switch (clickType) {
@@ -98,6 +105,7 @@ export default function Search(props) {
 					color="primary"
 					placeholder="Введите строку для поиска в это поле"
 					inputRef={inputEl}
+					onKeyPress={(event) => stopAction(event)}
 				/>
 				<Button
 					className={classes.btn}
