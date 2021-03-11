@@ -10,6 +10,6 @@ export function getApiSignature(params) {
 	})
 
 	string += '72f025ee47b0cc1d710967db9d1a6202'
-	/* Needs lastfm.api.md5.js. */
+
 	return md5(string)
 }

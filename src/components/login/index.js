@@ -70,17 +70,3 @@ export default function SignIn() {
 		</Container>
 	)
 }
-/*
-    Login: theol1993
-    Password: !1111qqqq
-
-
-    Application name	react last-fm
-    API key	e9fcdc63353cd735a0d4ae4cbf86ab6a
-    Shared secret	72f025ee47b0cc1d710967db9d1a6202
-    Registered to	theol1993
-
-    api_key[e9fcdc63353cd735a0d4ae4cbf86ab6a]methodauth.getSessiontoken[my token][72f025ee47b0cc1d710967db9d1a6202]
-
-    ws.audioscrobbler.com/2.0/?method=auth.getSession&token=[маркер]&api_key=[ключ api]&api_sig=[мой новый MD5 в выходной]
- */
