@@ -1,11 +1,11 @@
 import {
 	GET_TOP_ARTISTS_REQUEST,
 	GET_TOP_ARTISTS_SUCCESS,
-} from "../actions/topCharts/topArtists";
+} from '../actions/topCharts/topArtists'
 
 const initialState = {
 	artists: [],
-};
+}
 
 export function topArtists(state = initialState, action) {
 	switch (action.type) {

@@ -1,18 +1,21 @@
 import React from 'react'
-import logo from './page404.gif'
-import styles from './index.module.css'
+import gif from './page404.gif'
 import Container from '@material-ui/core/Container'
 import Button from '@material-ui/core/Button'
+import { makeStyles } from '@material-ui/core/styles'
+
+const useStyles = makeStyles((theme) => ({
+	image: {
+		maxHeight: '400px',
+	},
+}))
 
 export default function () {
+	const style = useStyles()
+
 	return (
 		<Container component="main" maxWidth="sm" align="center">
-			<div className={styles.head}>Страница не найдена...</div>
-
-			<div className={styles.body}>
-				<img src={logo} height={'400px'} alt={404} />
-			</div>
-
+			<h2>Страница не найдена...</h2>
 			<Button
 				type="submit"
 				fullWidth
@@ -22,6 +25,7 @@ export default function () {
 			>
 				Нажмите, чтобы вернуться на главную.
 			</Button>
+			<img className={style.image} src={gif} alt="image 404" />
 		</Container>
 	)
 }
