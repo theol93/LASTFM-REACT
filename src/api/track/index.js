@@ -3,11 +3,11 @@ import md5 from 'md5'
 export function trackFormatUrl(params, track, artist) {
 	let track_url = '&track=' + encodeURI(track)
 	let artist_url = '&artist=' + encodeURI(artist)
-	let api_key = '&api_key=19c87c749e5f33d6e21a5f3acdb9fc38'
+	let api_key = '&api_key=9f7bad2c80dfde275231c603606e58d5'
 	let sk = '&sk=' + localStorage.getItem('key')
 	let url = 'http://ws.audioscrobbler.com/2.0/?method='
 
-	params.api_key = '19c87c749e5f33d6e21a5f3acdb9fc38'
+	params.api_key = '9f7bad2c80dfde275231c603606e58d5'
 	params.sk = localStorage.getItem('key')
 	params.track = track
 	params.artist = artist
@@ -36,7 +36,7 @@ function getApiSignature(params) {
 		string += key + params[key]
 	})
 
-	string += '19c87c749e5f33d6e21a5f3acdb9fc38'
+	string += '847b832fe7223a9c89f2b47a0da93a57'
 
 	return md5(string)
 }
@@ -71,11 +71,11 @@ export async function scrobble(inputArtist, inputTrack) {
 	let url = 'http://ws.audioscrobbler.com/2.0/?method=track.scrobble'
 	let artist = '&artist=' + encodeURI(textArtist)
 	let track = '&track=' + encodeURI(textTrack)
-	let api_key = '&api_key=19c87c749e5f33d6e21a5f3acdb9fc38'
+	let api_key = '&api_key=9f7bad2c80dfde275231c603606e58d5'
 	let sk = '&sk=' + localStorage.getItem('key')
 
 	params.method = 'track.scrobble'
-	params.api_key = '19c87c749e5f33d6e21a5f3acdb9fc38'
+	params.api_key = '9f7bad2c80dfde275231c603606e58d5'
 	params.sk = localStorage.getItem('key')
 	params.track = textTrack
 	params.artist = textArtist

@@ -8,7 +8,7 @@ export function tracksSaved() {
 			let response = await fetch(
 				'https://ws.audioscrobbler.com/2.0/?method=user.getlovedtracks&user=' +
 					localStorage.getItem('name') +
-					'&api_key=19c87c749e5f33d6e21a5f3acdb9fc38&format=json'
+					'&api_key=9f7bad2c80dfde275231c603606e58d5&format=json'
 			)
 			response = await response.json()
 			dispatch(tracksSavedSuccess(response.lovedtracks.track))

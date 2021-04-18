@@ -7,7 +7,7 @@ export function getUserInfo() {
 		let url =
 			'https://ws.audioscrobbler.com/2.0/?method=user.getinfo&user=' +
 			localStorage.getItem('name') +
-			'&api_key=19c87c749e5f33d6e21a5f3acdb9fc38&format=json'
+			'&api_key=9f7bad2c80dfde275231c603606e58d5&format=json'
 		;(async function () {
 			let response = await fetch(url)
 			response = await response.json()

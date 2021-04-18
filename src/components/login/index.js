@@ -36,7 +36,7 @@ export default function SignIn() {
 									color="primary"
 									className={classes.submit}
 									href={
-										'http://www.last.fm/api/auth/?api_key=c8888bf8dd181e95100eecf02f6465a2'
+										'http://www.last.fm/api/auth/?api_key=9f7bad2c80dfde275231c603606e58d5'
 									}
 								>
 									Войти
@@ -58,7 +58,7 @@ export default function SignIn() {
 						</Grid>
 						<div
 							key={2}
-							style={{ color: 'grey', paddingTop: '50px' }}
+							style={{ color: 'black', paddingTop: '50px' }}
 						>
 							<h2>Test data for LastFM:</h2>
 							<h3>Login: theol1993</h3>
