@@ -6,14 +6,13 @@ export default function Token() {
 	let location = useLocation()
 
 	let path = location.search.split('=')
-
+	localStorage.setItem('token', path[1])
 	;(async function getSession() {
-		localStorage.setItem('token', path[1])
 		let token = localStorage.getItem('token')
 		let md5Key =
 			'api_key7f3727d9e893a6231edffa32a2d7c871methodauth.getSessiontoken' +
 			token +
-			'7f3727d9e893a6231edffa32a2d7c871'
+			'a553bd56bd36fdefaff68e5011ba2933'
 		let md5Hash = md5(md5Key)
 		let url =
 			'https://ws.audioscrobbler.com/2.0/?method=auth.getSession&token=' +
