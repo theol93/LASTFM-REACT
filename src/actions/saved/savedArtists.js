@@ -8,7 +8,7 @@ export function artistsSaved() {
 			let response = await fetch(
 				'https://ws.audioscrobbler.com/2.0/?method=user.gettopartists&user=' +
 					localStorage.getItem('name') +
-					'&api_key=e9fcdc63353cd735a0d4ae4cbf86ab6a&format=json'
+					'&api_key=c8888bf8dd181e95100eecf02f6465a2&format=json'
 			)
 			response = await response.json()
 			dispatch(artistsSavedSuccess(response.topartists.artist))

@@ -27,8 +27,8 @@ const useStyles = makeStyles((theme) => ({
 
 export default function Scrobble() {
 	const classes = useStyles()
-	const inputArtist = useRef("")
-	const inputTrack = useRef("")
+	const inputArtist = useRef('')
+	const inputTrack = useRef('')
 
 	return (
 		<Container component="main" align="center">

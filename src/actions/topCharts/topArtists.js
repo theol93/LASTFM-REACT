@@ -7,7 +7,7 @@ export function artistsRequest() {
 		;(async function () {
 			let responseArtist = await fetch(
 				'https://ws.audioscrobbler.com/2.0/?method=chart.getTopArtists&limit=10' +
-					'&api_key=e9fcdc63353cd735a0d4ae4cbf86ab6a&format=json'
+					'&api_key=c8888bf8dd181e95100eecf02f6465a2&format=json'
 			)
 			responseArtist = await responseArtist.json()
 			dispatch(artistsRequestSucces(responseArtist.artists.artist))

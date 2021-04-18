@@ -3,11 +3,11 @@ import md5 from 'md5'
 export function trackFormatUrl(params, track, artist) {
 	let track_url = '&track=' + encodeURI(track)
 	let artist_url = '&artist=' + encodeURI(artist)
-	let api_key = '&api_key=e9fcdc63353cd735a0d4ae4cbf86ab6a'
+	let api_key = '&api_key=c8888bf8dd181e95100eecf02f6465a2'
 	let sk = '&sk=' + localStorage.getItem('key')
 	let url = 'http://ws.audioscrobbler.com/2.0/?method='
 
-	params.api_key = 'e9fcdc63353cd735a0d4ae4cbf86ab6a'
+	params.api_key = 'c8888bf8dd181e95100eecf02f6465a2'
 	params.sk = localStorage.getItem('key')
 	params.track = track
 	params.artist = artist
@@ -36,13 +36,13 @@ function getApiSignature(params) {
 		string += key + params[key]
 	})
 
-	string += '72f025ee47b0cc1d710967db9d1a6202'
+	string += '7b2b94cc49e426438d3cacdd10a63922'
 
 	return md5(string)
 }
 
 export async function trackLove(track, artist) {
-	console.log("love")
+	console.log('love')
 	let params = {}
 	params.method = 'track.love'
 
@@ -52,8 +52,8 @@ export async function trackLove(track, artist) {
 	window.location.href = '/saved'
 }
 
-export async function trackUnlove( track, artist) {
-	console.log("unlove")
+export async function trackUnlove(track, artist) {
+	console.log('unlove')
 	let params = {}
 	params.method = 'track.unlove'
 
@@ -71,11 +71,11 @@ export async function scrobble(inputArtist, inputTrack) {
 	let url = 'http://ws.audioscrobbler.com/2.0/?method=track.scrobble'
 	let artist = '&artist=' + encodeURI(textArtist)
 	let track = '&track=' + encodeURI(textTrack)
-	let api_key = '&api_key=e9fcdc63353cd735a0d4ae4cbf86ab6a'
+	let api_key = '&api_key=c8888bf8dd181e95100eecf02f6465a2'
 	let sk = '&sk=' + localStorage.getItem('key')
 
 	params.method = 'track.scrobble'
-	params.api_key = 'e9fcdc63353cd735a0d4ae4cbf86ab6a'
+	params.api_key = 'c8888bf8dd181e95100eecf02f6465a2'
 	params.sk = localStorage.getItem('key')
 	params.track = textTrack
 	params.artist = textArtist
