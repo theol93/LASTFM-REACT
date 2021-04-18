@@ -1,6 +1,6 @@
 export function getUrl(type, text) {
 	const start = 'https://ws.audioscrobbler.com/2.0/?method='
-	const apiKey = '&api_key=c8888bf8dd181e95100eecf02f6465a2&format=json'
+	const apiKey = '&api_key=19c87c749e5f33d6e21a5f3acdb9fc38&format=json'
 
 	if (text !== '') {
 		let typeCode = ''
