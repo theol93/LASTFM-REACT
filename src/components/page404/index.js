@@ -25,7 +25,7 @@ export default function () {
 			>
 				Нажмите, чтобы вернуться на главную.
 			</Button>
-			<img className={style.image} src={gif} alt="image 404" />
+			<img className={style.image} src={gif} alt="404" />
 		</Container>
 	)
 }
