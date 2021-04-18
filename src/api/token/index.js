@@ -11,14 +11,14 @@ export default function Token() {
 		localStorage.setItem('token', path[1])
 		let token = localStorage.getItem('token')
 		let md5Key =
-			'api_key9f7bad2c80dfde275231c603606e58d5methodauth.getSessiontoken' +
+			'api_key7f3727d9e893a6231edffa32a2d7c871methodauth.getSessiontoken' +
 			token +
-			'847b832fe7223a9c89f2b47a0da93a57'
+			'7f3727d9e893a6231edffa32a2d7c871'
 		let md5Hash = md5(md5Key)
 		let url =
-			'http://ws.audioscrobbler.com/2.0/?method=auth.getSession&token=' +
+			'https://ws.audioscrobbler.com/2.0/?method=auth.getSession&token=' +
 			token +
-			'&api_key=9f7bad2c80dfde275231c603606e58d5&api_sig=' +
+			'&api_key=7f3727d9e893a6231edffa32a2d7c871&api_sig=' +
 			md5Hash +
 			'&format=json'
 		localStorage.setItem('url', url)

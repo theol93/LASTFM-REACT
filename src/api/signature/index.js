@@ -9,7 +9,7 @@ export function getApiSignature(params) {
 		string += key + params[key]
 	})
 
-	string += '847b832fe7223a9c89f2b47a0da93a57'
+	string += '7f3727d9e893a6231edffa32a2d7c871'
 
 	return md5(string)
 }

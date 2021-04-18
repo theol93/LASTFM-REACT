@@ -36,7 +36,7 @@ export default function SignIn() {
 									color="primary"
 									className={classes.submit}
 									href={
-										'http://www.last.fm/api/auth/?api_key=9f7bad2c80dfde275231c603606e58d5'
+										'http://www.last.fm/api/auth/?api_key=7f3727d9e893a6231edffa32a2d7c871'
 									}
 								>
 									Войти
