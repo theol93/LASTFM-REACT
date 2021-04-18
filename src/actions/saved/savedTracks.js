@@ -6,7 +6,7 @@ export function tracksSaved() {
 		dispatch({ type: GET_SAVED_TRACKS_REQUEST })
 		;(async function () {
 			let response = await fetch(
-				'http://ws.audioscrobbler.com/2.0/?method=user.getlovedtracks&user=' +
+				'https://ws.audioscrobbler.com/2.0/?method=user.getlovedtracks&user=' +
 					localStorage.getItem('name') +
 					'&api_key=e9fcdc63353cd735a0d4ae4cbf86ab6a&format=json'
 			)

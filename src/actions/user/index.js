@@ -5,7 +5,7 @@ export function getUserInfo() {
 	return (dispatch) => {
 		dispatch({ type: GET_USER_INFO_REQUEST })
 		let url =
-			'http://ws.audioscrobbler.com/2.0/?method=user.getinfo&user=' +
+			'https://ws.audioscrobbler.com/2.0/?method=user.getinfo&user=' +
 			localStorage.getItem('name') +
 			'&api_key=e9fcdc63353cd735a0d4ae4cbf86ab6a&format=json'
 		;(async function () {

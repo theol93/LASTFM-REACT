@@ -4,7 +4,7 @@ import {
 } from '../actions/saved/savedArtists'
 
 const initialState = {
-	artistsSaved: []
+	artistsSaved: [],
 }
 
 export function artistsSaved(state = initialState, action) {

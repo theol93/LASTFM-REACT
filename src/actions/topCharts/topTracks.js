@@ -6,7 +6,7 @@ export function tracksRequest() {
 		dispatch({ type: GET_TOP_TRACKS_REQUEST })
 		;(async function () {
 			let responseTracks = await fetch(
-				'http://ws.audioscrobbler.com/2.0/?method=chart.getTopTracks&limit=10' +
+				'https://ws.audioscrobbler.com/2.0/?method=chart.getTopTracks&limit=10' +
 					'&api_key=e9fcdc63353cd735a0d4ae4cbf86ab6a&format=json'
 			)
 

@@ -1,5 +1,5 @@
 export function getUrl(type, text) {
-	const start = 'http://ws.audioscrobbler.com/2.0/?method='
+	const start = 'https://ws.audioscrobbler.com/2.0/?method='
 	const apiKey = '&api_key=ae106d678c11a00457038f9cd9ad465d&format=json'
 
 	if (text !== '') {
