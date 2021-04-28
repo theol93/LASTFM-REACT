@@ -5,7 +5,7 @@ export function trackFormatUrl(params, track, artist) {
 	let artist_url = '&artist=' + encodeURI(artist)
 	let api_key = '&api_key=7f3727d9e893a6231edffa32a2d7c871'
 	let sk = '&sk=' + localStorage.getItem('key')
-	let url = 'http://ws.audioscrobbler.com/2.0/?method='
+	let url = 'https://ws.audioscrobbler.com/2.0/?method='
 
 	params.api_key = '7f3727d9e893a6231edffa32a2d7c871'
 	params.sk = localStorage.getItem('key')
@@ -68,7 +68,7 @@ export async function scrobble(inputArtist, inputTrack) {
 	let textArtist = inputArtist.current.value
 	let textTrack = inputTrack.current.value
 
-	let url = 'http://ws.audioscrobbler.com/2.0/?method=track.scrobble'
+	let url = 'https://ws.audioscrobbler.com/2.0/?method=track.scrobble'
 	let artist = '&artist=' + encodeURI(textArtist)
 	let track = '&track=' + encodeURI(textTrack)
 	let api_key = '&api_key=7f3727d9e893a6231edffa32a2d7c871'
