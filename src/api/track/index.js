@@ -36,13 +36,12 @@ function getApiSignature(params) {
 		string += key + params[key]
 	})
 
-	string += '7f3727d9e893a6231edffa32a2d7c871'
+	string += 'a553bd56bd36fdefaff68e5011ba2933'
 
 	return md5(string)
 }
 
 export async function trackLove(track, artist) {
-	console.log('love')
 	let params = {}
 	params.method = 'track.love'
 
@@ -53,7 +52,6 @@ export async function trackLove(track, artist) {
 }
 
 export async function trackUnlove(track, artist) {
-	console.log('unlove')
 	let params = {}
 	params.method = 'track.unlove'
 
