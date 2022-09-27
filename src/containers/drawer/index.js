@@ -45,22 +45,22 @@ export default function CenteredTabs() {
 				? (function () {
 						return setPages([
 							{
-								label: 'ТОП 10',
+								label: 'TOP 10',
 								to: '/top',
 								icon: <MusicNoteIcon />,
 							},
 							{
-								label: 'ПОИСК',
+								label: 'SEARCH',
 								to: '/',
 								icon: <SearchIcon />,
 							},
 							{
-								label: 'СОХРАНЕННЫЕ',
+								label: 'SAVED',
 								to: '/saved',
 								icon: <FavoriteBorderIcon />,
 							},
 							{
-								label: 'СКРОБЛ',
+								label: 'SCROBBLE',
 								to: '/scrobble',
 								icon: <AddIcon />,
 							},
@@ -75,17 +75,17 @@ export default function CenteredTabs() {
 						getDepsPages(localStorage.getItem('name'))
 						setPages([
 							{
-								label: 'ТОП',
+								label: 'TOP',
 								to: '/top',
 								icon: <MusicNoteIcon />,
 							},
 							{
-								label: 'ПОИСК',
+								label: 'SEARCH',
 								to: '/',
 								icon: <SearchIcon />,
 							},
 							{
-								label: 'ЛОГИН',
+								label: 'LOGIN',
 								to: '/login',
 								icon: <LockOpenIcon />,
 							},

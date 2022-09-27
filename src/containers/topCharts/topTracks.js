@@ -51,7 +51,7 @@ export default function TopTracks(props) {
 		<>
 			{tracksIsFetching === false ? (
 				<Grid item xs={6} className={classes.root}>
-					<h4>ТОП 10 ПЕСЕН</h4>
+					<h4>TOP 10 SONGS</h4>
 					{props.track.map((track, i) => {
 						return (
 							<Paper key={i}>

@@ -37,14 +37,14 @@ export default function Scrobble() {
 					id="outlined-secondary"
 					variant="outlined"
 					color="primary"
-					placeholder="Исполнитель"
+					placeholder="Artist"
 					inputRef={inputArtist}
 				/>
 				<TextField
 					id="outlined-secondary"
 					variant="outlined"
 					color="primary"
-					placeholder="Название песни"
+					placeholder="Song name"
 					inputRef={inputTrack}
 				/>
 			</form>
@@ -54,7 +54,7 @@ export default function Scrobble() {
 				variant="contained"
 				onClick={() => scrobble(inputArtist, inputTrack)}
 			>
-				Добавить
+				ADD
 			</Button>
 		</Container>
 	)

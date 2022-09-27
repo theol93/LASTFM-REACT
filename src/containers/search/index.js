@@ -64,12 +64,12 @@ export default function Search(props) {
 	function stopAction(event) {
 		if (event.charCode === 13) {
 			event.preventDefault()
-			alert('Выберите что вы хотите искать, нажав кнопку сбоку!')
+			alert('Press the button what you search!')
 		}
 	}
 
 	function renderSearch() {
-		if (tracksSavedIsFetching === false && inputEl.current.value !== '') {
+		if (tracksSavedIsFetching === false && inputEl?.current?.value !== '') {
 			switch (clickType) {
 				case 'track':
 					return (
@@ -104,7 +104,7 @@ export default function Search(props) {
 					id="outlined-secondary"
 					variant="outlined"
 					color="primary"
-					placeholder="Введите строку для поиска в это поле"
+					placeholder="Search"
 					inputRef={inputEl}
 					onKeyPress={(event) => stopAction(event)}
 				/>
@@ -116,7 +116,7 @@ export default function Search(props) {
 						setClickType('track')
 					}}
 				>
-					ПЕСНЯ
+					SONG
 				</Button>
 				<Button
 					className={classes.btn}
@@ -126,7 +126,7 @@ export default function Search(props) {
 						setClickType('artist')
 					}}
 				>
-					АВТОР
+					AUTHOR
 				</Button>
 			</form>
 			{renderSearch()}

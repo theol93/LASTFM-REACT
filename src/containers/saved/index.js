@@ -45,8 +45,8 @@ export default function Saved(props) {
 		<>
 			<Paper>
 				<Tabs value={value} onChange={handleChange} centered>
-					<Tab label={<h4>песни</h4>} />
-					<Tab label={<h4>исполнители</h4>} />
+					<Tab label={<h4>songs</h4>} />
+					<Tab label={<h4>authors</h4>} />
 				</Tabs>
 			</Paper>
 			{renderSavedPage()}

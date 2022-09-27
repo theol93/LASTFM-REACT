@@ -50,7 +50,7 @@ export default function TopArtists(props) {
 		<>
 			{props.artistsIsFetching === false ? (
 				<Grid item xs={6} className={classes.root}>
-					<h4>ТОП 10 ИСПОЛНИТЕЛЕЙ</h4>
+					<h4>TOP 10 AUTHORS</h4>
 					{props.artist.map((artist, i) => {
 						return (
 							<Paper key={i}>

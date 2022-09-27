@@ -39,7 +39,7 @@ export default function SignIn() {
 										'http://www.last.fm/api/auth/?api_key=7f3727d9e893a6231edffa32a2d7c871'
 									}
 								>
-									Войти
+									LOG IN
 								</Button>
 							</Grid>
 							<Grid key={1} item className={classes.paper}>
@@ -52,7 +52,7 @@ export default function SignIn() {
 									href={'https://www.last.fm/ru/join'}
 									target="_blank"
 								>
-									Зарегистрироваться
+									SIGN UP
 								</Button>
 							</Grid>
 						</Grid>
