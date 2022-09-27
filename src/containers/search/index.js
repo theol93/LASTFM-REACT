@@ -56,6 +56,7 @@ export default function Search(props) {
 
 	const inputEl = useRef(null)
 	const [clickType, setClickType] = useState('')
+
 	useEffect(() => {
 		setTracksSaved()
 	}, [setTracksSaved])
@@ -68,7 +69,7 @@ export default function Search(props) {
 	}
 
 	function renderSearch() {
-		if (tracksSavedIsFetching === false) {
+		if (tracksSavedIsFetching === false && inputEl.current.value !== '') {
 			switch (clickType) {
 				case 'track':
 					return (
@@ -93,7 +94,7 @@ export default function Search(props) {
 				default:
 					return ''
 			}
-		} else return ''
+		} 
 	}
 
 	return (
