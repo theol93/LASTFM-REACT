@@ -53,31 +53,31 @@ export default function User(props) {
 											<TableHead>
 												<TableRow>
 													<TableCell>
-														Пользователь
+														User
 													</TableCell>
 													<TableCell align="center">
-														Возраст
+														Age
 													</TableCell>
 													<TableCell align="center">
-														Имя
+														Name
 													</TableCell>
 													<TableCell align="center">
-														Пол
+														Sex
 													</TableCell>
 													<TableCell align="center">
-														Страна
+														Country
 													</TableCell>
 													<TableCell align="center">
-														Ссылка
+														Url
 													</TableCell>
 													<TableCell align="center">
-														Подписчиков
+														Subscribers
 													</TableCell>
 													<TableCell align="center">
-														Прослушиваний
+														Listens
 													</TableCell>
 													<TableCell align="center">
-														Плейлистов
+														Playlists
 													</TableCell>
 												</TableRow>
 											</TableHead>
@@ -136,7 +136,7 @@ export default function User(props) {
 											localStorage.clear()
 										}}
 									>
-										Выйти из аккаунта!
+										Log out!
 									</Button>
 								</Grid>
 							</Grid>
